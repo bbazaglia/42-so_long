@@ -4,13 +4,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int	error_msg(char *error, char **matrix)
+
+void	error_msg(char *error, char **matrix)
 {
+	int	i;
+
 	if (matrix)
-		free(*matrix);
+	{
+		i = 0;
+		while (matrix[i] != NULL)
+		{
+			free(matrix[i]);
+			i++;
+		}
+		free(matrix);
+	}
 	ft_printf("Error: %s\n", error);
 	exit(0);
-	return (0);
 }
 
 int	get_num_lines(char *argv)
@@ -43,14 +53,16 @@ char	**populate_matrix(char *argv, int num_lines)
 
 	matrix = malloc(sizeof(char *) * num_lines + 1);
 	if (matrix == NULL)
-		return (NULL);
+		error_msg("Memory allocation failed", NULL);
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
-		return (0);
+		error_msg("Failed to open file", matrix);
 	i = 0;
 	while (i < num_lines)
 	{
 		matrix[i] = get_next_line(fd);
+		if (matrix[i] == NULL)
+			error_msg("Failed to read matrix line", matrix);
 		i++;
 	}
 	matrix[i] = NULL;
@@ -61,30 +73,31 @@ char	**populate_matrix(char *argv, int num_lines)
 void	check_boundaries(char **matrix, int num_lines)
 {
 	int	col;
+	int	row;
 	int	x;
 	int	y;
 
-	y = 0;
-	col = ft_strlen(matrix[0]);
-	while (y < num_lines)
+	col = ft_strlen(matrix[0]) - 1;
+	row = num_lines - 1;
+	x = 0;
+	while (x <= col)
 	{
-		x = 0;
-		while (x < col)
+		y = 0;
+		while (y <= row)
 		{
-			if (x == 0 && matrix[0][y] != 1)
+			if (x == 0 && matrix[x][y] != '1')
 				error_msg("Boundaries must be set to 1", matrix);
-            if (y == 0 && matrix[x][0] != 1)
+			if (y == 0 && matrix[x][y] != '1')
 				error_msg("Boundaries must be set to 1", matrix);
-			if (y == num_lines - 1 && matrix[x][num_lines -1] != 1)
+			if (y == col && matrix[x][y] != '1')
 				error_msg("Boundaries must be set to 1", matrix);
-            if (x == col - 1 && matrix[col - 1][y] != 1)
+			if (x == row && matrix[x][y] != '1')
 				error_msg("Boundaries must be set to 1", matrix);
-		    x++;
-        }
-        y++;
+			y++;
+		}
+		x++;
 	}
 }
-
 
 int	main(int argc, char **argv)
 {
@@ -96,7 +109,7 @@ int	main(int argc, char **argv)
 	{
 		num_lines = get_num_lines(&argv[1][0]);
 		matrix = populate_matrix(&argv[1][0], num_lines);
-        check_boundaries(matrix, num_lines);
+		check_boundaries(matrix, num_lines);
 		i = 0;
 		while (matrix[i])
 		{
