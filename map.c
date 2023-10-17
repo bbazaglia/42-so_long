@@ -4,10 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-void	error_msg(char *error, char **matrix)
+void free_matrix(char **matrix)
 {
-	int	i;
+	int i;
 
 	if (matrix)
 	{
@@ -19,6 +18,11 @@ void	error_msg(char *error, char **matrix)
 		}
 		free(matrix);
 	}
+}
+
+void	error_msg(char *error, char **matrix)
+{
+	free_matrix(matrix);
 	ft_printf("Error: %s\n", error);
 	exit(0);
 }
@@ -31,7 +35,10 @@ int	get_num_lines(char *argv)
 
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
-		return (0);
+	{
+		ft_printf("Error opening file");
+    	return (0);
+	}
 	num_lines = 0;
 	while (1)
 	{
@@ -77,13 +84,13 @@ void	check_boundaries(char **matrix, int num_lines)
 	int	x;
 	int	y;
 
-	col = ft_strlen(matrix[0]) - 1;
+	col = ft_strlen(matrix[0]) - 2;
 	row = num_lines - 1;
 	x = 0;
-	while (x <= col)
+	while (x <= row)
 	{
 		y = 0;
-		while (y <= row)
+		while (y <= col)
 		{
 			if (x == 0 && matrix[x][y] != '1')
 				error_msg("Boundaries must be set to 1", matrix);
@@ -99,7 +106,33 @@ void	check_boundaries(char **matrix, int num_lines)
 	}
 }
 
-int	main(int argc, char **argv)
+int	main(void)
+{
+	int		num_lines;
+	char	**matrix;
+	int		i;
+
+	int argc = 2;
+	// char *argv[2][10];
+	char *argv = "map.txt";
+
+	if (argc == 2)
+	{
+		num_lines = get_num_lines(argv);
+		matrix = populate_matrix(argv, num_lines);
+		check_boundaries(matrix, num_lines);
+		i = 0;
+		while (matrix[i])
+		{
+			printf("%s", matrix[i]);
+			i++;
+		}
+		printf("\n");
+	}
+}
+
+
+/* int	main(int argc, char **argv)
 {
 	int		num_lines;
 	char	**matrix;
@@ -119,7 +152,7 @@ int	main(int argc, char **argv)
 		printf("\n");
 	}
 }
-
+ */
 // void	print_msg(int type, t_control *obj)
 // {
 // 	if (type == 1 || type == 2 || type == 3 || type == 4 || type == 5
