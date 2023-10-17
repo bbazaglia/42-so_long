@@ -24,7 +24,7 @@ void	error_msg(char *error, char **matrix)
 {
 	free_matrix(matrix);
 	ft_printf("Error: %s\n", error);
-	exit(0);
+	exit(1);
 }
 
 int	get_num_lines(char *argv)
@@ -37,7 +37,7 @@ int	get_num_lines(char *argv)
 	if (fd < 0)
 	{
 		ft_printf("Error opening file");
-    	return (0);
+    	exit(1);
 	}
 	num_lines = 0;
 	while (1)
@@ -106,6 +106,19 @@ void	check_boundaries(char **matrix, int num_lines)
 	}
 }
 
+void check_format(char *argv)
+{
+	int size;
+	
+	size = ft_strlen(argv) -1;
+
+	if (argv[size] != 'r' || argv[size -1] != 'e' || argv[size -2] != 'b' || argv[size - 3] != '.')
+	{
+		ft_printf("The file must be .ber format\n");
+		exit(1);
+	}
+}
+
 int	main(void)
 {
 	int		num_lines;
@@ -113,11 +126,11 @@ int	main(void)
 	int		i;
 
 	int argc = 2;
-	// char *argv[2][10];
-	char *argv = "map.txt";
+	char *argv = "map.ber";
 
 	if (argc == 2)
 	{
+		check_format(argv);
 		num_lines = get_num_lines(argv);
 		matrix = populate_matrix(argv, num_lines);
 		check_boundaries(matrix, num_lines);
@@ -129,6 +142,8 @@ int	main(void)
 		}
 		printf("\n");
 	}
+	else
+		ft_printf("Map file is required as an argument.\n");
 }
 
 
@@ -152,31 +167,4 @@ int	main(void)
 		printf("\n");
 	}
 }
- */
-// void	print_msg(int type, t_control *obj)
-// {
-// 	if (type == 1 || type == 2 || type == 3 || type == 4 || type == 5
-// 		|| type == 6 || type == 7 || type == 9)
-// 		ft_printf("\n%s", "ERROR: ");
-// 	if (type == 1)
-// 		ft_printf("Map does not exist or extension is not allowed");
-// 	if (type == 2)
-// 		ft_printf("The map needs to be a rectangle.");
-// 	if (type == 3)
-// 	{
-// 		ft_printf("The map needs to 1 player, at least 1 collectible");
-// 		ft_printf(" and 1 exit.");
-// 	}
-// 	if (type == 4)
-// 		ft_printf("The map needs has at least three lines.");
-// 	if (type == 5)
-// 		ft_printf("The map needs to be closed by walls.");
-// 	if (type == 6)
-// 		ft_printf("Impossible to collect collectibles and finish the game.");
-// 	if (type == 7)
-// 		ft_printf("The map has invalid caracter");
-// 	if (type == 8)
-// 		ft_printf("\nNumbers of Moviment: %i", obj->n_moviments);
-// 	if (type == 9)
-// 		ft_printf("Invalid Map");
-// }
+*/
