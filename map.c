@@ -12,10 +12,11 @@ typedef struct s_game
 	int	space;
 	int	wall;
 	int	error;
-	int player_x;
-	int player_y;
-	int size_x;
-	int size_y;
+	int	player_x;
+	int	player_y;
+	int	size_x;
+	int	size_y;
+	int	exit_reached;
 }		t_game;
 
 void	free_matrix(char **matrix)
@@ -50,7 +51,7 @@ int	get_num_lines(char *argv)
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("Error opening file,\n");
+		ft_printf("Error: Error opening file,\n");
 		exit(1);
 	}
 	num_lines = 0;
@@ -71,7 +72,7 @@ char	**populate_matrix(char *argv, int num_lines)
 	int		fd;
 	char	**matrix;
 	int		i;
-	int len;
+	int		len;
 
 	matrix = malloc(sizeof(char *) * num_lines + 1);
 	if (matrix == NULL)
@@ -86,8 +87,8 @@ char	**populate_matrix(char *argv, int num_lines)
 		if (matrix[i] == NULL)
 			error_msg("Failed to read matrix line", matrix);
 		len = ft_strlen(matrix[i]);
-		if (matrix[i][len -1] == '\n')
-			matrix[i][len -1] = '\0';
+		if (matrix[i][len - 1] == '\n')
+			matrix[i][len - 1] = '\0';
 		i++;
 	}
 	matrix[i] = NULL;
@@ -132,7 +133,7 @@ void	check_format(char *argv)
 	if (argv[size] != 'r' || argv[size - 1] != 'e' || argv[size - 2] != 'b'
 		|| argv[size - 3] != '.')
 	{
-		ft_printf("The file must be .ber format\n.");
+		ft_printf("Error: The file must be .ber format\n.");
 		exit(1);
 	}
 }
@@ -187,15 +188,14 @@ void	check_characters(char **matrix, t_game *game)
 		error_msg("The map can be composed of only these 5 characters: P, E, C, 0, 1", matrix);
 }
 
-void check_rectangle(char **matrix)
+void	check_rectangle(char **matrix)
 {
-	int x;
-	int y;
-	int count;
+	int	x;
+	int	y;
+	int	count;
 	int	size;
 
 	size = ft_strlen(matrix[0]);
-
 	x = 0;
 	while (matrix[x])
 	{
@@ -209,10 +209,31 @@ void check_rectangle(char **matrix)
 	}
 }
 
-// void flood_fill(t_game *game)
-// {
+void	flood_fill(char **matrix, t_game *game, int x, int y)
+{
+	if (x < 0 || x >= game->size_x || y < 0 || y >= game->size_y)
+		return ;
+	if (matrix[x][y] == '1' || matrix[x][y] == 'X')
+		return ;
+	if (matrix[x][y] == 'C')
+		game->collectible--;
+	if (matrix[x][y] == 'E')
+		game->exit_reached = 1;
+	matrix[x][y] = 'X';
+	flood_fill(matrix, game, x + 1, y);
+	flood_fill(matrix, game, x - 1, y);
+	flood_fill(matrix, game, x, y + 1);
+	flood_fill(matrix, game, x, y - 1);
+}
 
-// }
+int check_path(t_game *game, char **matrix)
+{
+	flood_fill(matrix, game, game->player_x, game->player_y);
+	if (game->exit_reached == 1 && game->collectible == 0)
+		return (0);
+	else
+		return (1);
+}
 
 int	main(void)
 {
@@ -233,16 +254,18 @@ int	main(void)
 		check_characters(matrix, &game);
 		check_boundaries(matrix, num_lines);
 		check_rectangle(matrix);
+		if (check_path(&game, matrix) == 1)
+			error_msg("There's not a valid path in the map", matrix);
 		i = 0;
 		while (matrix[i])
 		{
-			printf("%s\n", matrix[i]);
+			ft_printf("%s\n", matrix[i]);
 			i++;
 		}
-		printf("\n");
+		ft_printf("%d\n%d\n", game.size_x, game.size_y);
 	}
 	else
-		ft_printf("Map file is required as an argument.\n");
+		ft_printf("Error: Map file is required as an argument.\n");
 }
 
 /* int	main(int argc, char **argv)
