@@ -4,9 +4,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void free_matrix(char **matrix)
+typedef struct s_game
 {
-	int i;
+	int	player;
+	int	exit;
+	int	collectible;
+	int	space;
+	int	wall;
+	int	error;
+	int newline;
+}		t_game;
+
+void	free_matrix(char **matrix)
+{
+	int	i;
 
 	if (matrix)
 	{
@@ -23,7 +34,7 @@ void free_matrix(char **matrix)
 void	error_msg(char *error, char **matrix)
 {
 	free_matrix(matrix);
-	ft_printf("Error: %s\n", error);
+	ft_printf("Error: %s.\n", error);
 	exit(1);
 }
 
@@ -36,8 +47,8 @@ int	get_num_lines(char *argv)
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("Error opening file");
-    	exit(1);
+		ft_printf("Error opening file,\n");
+		exit(1);
 	}
 	num_lines = 0;
 	while (1)
@@ -106,16 +117,89 @@ void	check_boundaries(char **matrix, int num_lines)
 	}
 }
 
-void check_format(char *argv)
+void	check_format(char *argv)
 {
-	int size;
-	
-	size = ft_strlen(argv) -1;
+	int	size;
 
-	if (argv[size] != 'r' || argv[size -1] != 'e' || argv[size -2] != 'b' || argv[size - 3] != '.')
+	size = ft_strlen(argv) - 1;
+	if (argv[size] != 'r' || argv[size - 1] != 'e' || argv[size - 2] != 'b'
+		|| argv[size - 3] != '.')
 	{
-		ft_printf("The file must be .ber format\n");
+		ft_printf("The file must be .ber format\n.");
 		exit(1);
+	}
+}
+
+void	initialize_game(t_game *game)
+{
+	game->player = 0;
+	game->exit = 0;
+	game->collectible = 0;
+	game->space = 0;
+	game->wall = 0;
+	game->error = 0;
+	game->newline = 0;
+}
+
+void	check_characters(char **matrix, t_game *game)
+{
+	int	x;
+	int	y;
+
+	initialize_game(game);
+	x = 0;
+	while (matrix[x])
+	{
+		y = 0;
+		while (matrix[x][y])
+		{
+			if (matrix[x][y] == 'P')
+				game->player++;
+			else if (matrix[x][y] == 'E')
+				game->exit++;
+			else if (matrix[x][y] == 'C')
+				game->collectible++;
+			else if (matrix[x][y] == '0')
+				game->space++;
+			else if (matrix[x][y] == '1')
+				game->wall++;
+			else if (matrix[x][y] == '\n')
+				game->newline++;
+			else
+				game->error++;
+			y++;
+		}
+		x++;
+	}
+	if (game->exit != 1 || game->player != 1 || game->collectible < 1)
+		error_msg("The map must contain 1 exit, at least 1 collectible, and 1 starting position", matrix);
+	if (game->error > 0)
+		error_msg("The map can be composed of only these 5 characters: P, E, C, 0, 1", matrix);
+}
+
+void check_rectangle(char **matrix)
+{
+	int x;
+	int y;
+	int count;
+	int	size;
+
+	size = ft_strlen(matrix[0]) - 1;
+
+	x = 0;
+	while (matrix[x])
+	{
+		y = 0;
+		count = 0;
+		while (matrix[x][y])
+		{
+			if (matrix[x][y] == '\n')
+				count++;
+			y++;
+		}
+		if (ft_strlen(matrix[x]) -count != size)
+			error_msg("The map must be rectangular", matrix);
+		x++;
 	}
 }
 
@@ -123,17 +207,21 @@ int	main(void)
 {
 	int		num_lines;
 	char	**matrix;
+	t_game	game;
 	int		i;
+	int		argc;
+	char	*argv;
 
-	int argc = 2;
-	char *argv = "map.ber";
-
+	argc = 2;
+	argv = "map.ber";
 	if (argc == 2)
 	{
 		check_format(argv);
 		num_lines = get_num_lines(argv);
 		matrix = populate_matrix(argv, num_lines);
+		check_characters(matrix, &game);
 		check_boundaries(matrix, num_lines);
+		check_rectangle(matrix);
 		i = 0;
 		while (matrix[i])
 		{
@@ -145,7 +233,6 @@ int	main(void)
 	else
 		ft_printf("Map file is required as an argument.\n");
 }
-
 
 /* int	main(int argc, char **argv)
 {
