@@ -13,6 +13,10 @@ typedef struct s_game
 	int	wall;
 	int	error;
 	int newline;
+	int player_x;
+	int player_y;
+	int size_x;
+	int size_y;
 }		t_game;
 
 void	free_matrix(char **matrix)
@@ -154,7 +158,11 @@ void	check_characters(char **matrix, t_game *game)
 		while (matrix[x][y])
 		{
 			if (matrix[x][y] == 'P')
+			{
 				game->player++;
+				game->player_x = x;
+				game->player_y = y;
+			}
 			else if (matrix[x][y] == 'E')
 				game->exit++;
 			else if (matrix[x][y] == 'C')
@@ -171,6 +179,8 @@ void	check_characters(char **matrix, t_game *game)
 		}
 		x++;
 	}
+	game->size_x = x;
+	game->size_y = y;
 	if (game->exit != 1 || game->player != 1 || game->collectible < 1)
 		error_msg("The map must contain 1 exit, at least 1 collectible, and 1 starting position", matrix);
 	if (game->error > 0)
@@ -201,6 +211,11 @@ void check_rectangle(char **matrix)
 			error_msg("The map must be rectangular", matrix);
 		x++;
 	}
+}
+
+void flood_fill(t_game *game)
+{
+
 }
 
 int	main(void)
