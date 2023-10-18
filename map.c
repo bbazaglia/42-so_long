@@ -12,7 +12,6 @@ typedef struct s_game
 	int	space;
 	int	wall;
 	int	error;
-	int newline;
 	int player_x;
 	int player_y;
 	int size_x;
@@ -72,6 +71,7 @@ char	**populate_matrix(char *argv, int num_lines)
 	int		fd;
 	char	**matrix;
 	int		i;
+	int len;
 
 	matrix = malloc(sizeof(char *) * num_lines + 1);
 	if (matrix == NULL)
@@ -85,6 +85,9 @@ char	**populate_matrix(char *argv, int num_lines)
 		matrix[i] = get_next_line(fd);
 		if (matrix[i] == NULL)
 			error_msg("Failed to read matrix line", matrix);
+		len = ft_strlen(matrix[i]);
+		if (matrix[i][len -1] == '\n')
+			matrix[i][len -1] = '\0';
 		i++;
 	}
 	matrix[i] = NULL;
@@ -99,7 +102,7 @@ void	check_boundaries(char **matrix, int num_lines)
 	int	x;
 	int	y;
 
-	col = ft_strlen(matrix[0]) - 2;
+	col = ft_strlen(matrix[0]) - 1;
 	row = num_lines - 1;
 	x = 0;
 	while (x <= row)
@@ -142,7 +145,6 @@ void	initialize_game(t_game *game)
 	game->space = 0;
 	game->wall = 0;
 	game->error = 0;
-	game->newline = 0;
 }
 
 void	check_characters(char **matrix, t_game *game)
@@ -171,8 +173,6 @@ void	check_characters(char **matrix, t_game *game)
 				game->space++;
 			else if (matrix[x][y] == '1')
 				game->wall++;
-			else if (matrix[x][y] == '\n')
-				game->newline++;
 			else
 				game->error++;
 			y++;
@@ -194,7 +194,7 @@ void check_rectangle(char **matrix)
 	int count;
 	int	size;
 
-	size = ft_strlen(matrix[0]) - 1;
+	size = ft_strlen(matrix[0]);
 
 	x = 0;
 	while (matrix[x])
@@ -202,21 +202,17 @@ void check_rectangle(char **matrix)
 		y = 0;
 		count = 0;
 		while (matrix[x][y])
-		{
-			if (matrix[x][y] == '\n')
-				count++;
 			y++;
-		}
-		if (ft_strlen(matrix[x]) -count != size)
+		if (ft_strlen(matrix[x]) != size)
 			error_msg("The map must be rectangular", matrix);
 		x++;
 	}
 }
 
-void flood_fill(t_game *game)
-{
+// void flood_fill(t_game *game)
+// {
 
-}
+// }
 
 int	main(void)
 {
@@ -240,7 +236,7 @@ int	main(void)
 		i = 0;
 		while (matrix[i])
 		{
-			printf("%s", matrix[i]);
+			printf("%s\n", matrix[i]);
 			i++;
 		}
 		printf("\n");
