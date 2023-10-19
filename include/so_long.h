@@ -28,6 +28,7 @@ typedef struct s_game
 	mlx_t			*mlx;
 	mlx_texture_t	*texture;
 	mlx_image_t		*img;
+	mlx_key_data_t	*keydata;
 }					t_game;
 void				initialize_game(t_game *game);
 void				ft_hook(void *param);

@@ -2,12 +2,12 @@
 
 int	main(void)
 {
-	int				num_lines;
-	char			**matrix;
-	int				i;
-	int				argc;
-	char			*argv;
-	t_game			game;
+	int		num_lines;
+	char	**matrix;
+	int		i;
+	int		argc;
+	char	*argv;
+	t_game	game;
 
 	argc = 2;
 	argv = "map.ber";
