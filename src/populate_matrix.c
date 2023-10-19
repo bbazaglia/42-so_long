@@ -32,7 +32,7 @@ char	**populate_matrix(char *argv, int num_lines)
 	int		i;
 	int		len;
 
-	matrix = malloc(sizeof(char *) * num_lines + 1);
+	matrix = malloc(sizeof(char *) * (num_lines + 1));
 	if (matrix == NULL)
 		error_msg("Memory allocation failed", NULL);
 	fd = open(argv, O_RDONLY);

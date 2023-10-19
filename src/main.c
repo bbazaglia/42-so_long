@@ -33,6 +33,7 @@ int	main(void)
 		mlx_delete_image(mlx, img);
 		mlx_delete_texture(texture);
 		mlx_terminate(mlx);
+		free_matrix(matrix);
 	}
 	else
 		ft_printf("Error: Map file is required as an argument.\n");

@@ -27,11 +27,12 @@ typedef struct s_game
 	int				size_y;
 	int				exit_reached;
 	int				moves;
+	mlx_t			*mlx;
 }					t_game;
 void				initialize_game(t_game *game);
 void				ft_hook(void *param);
 int					get_num_lines(char *argv);
-void					check_map(char *argv, int num_lines, char **matrix,
+void				check_map(char *argv, int num_lines, char **matrix,
 						t_game *game);
 char				**populate_matrix(char *argv, int num_lines);
 void				free_matrix(char **matrix);
