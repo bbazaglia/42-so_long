@@ -62,5 +62,5 @@ void	initialize_game(t_game *game)
 	game->space = 0;
 	game->wall = 0;
 	game->error = 0;
-	game->moves = 0;
+	game->move_count = 0;
 }

@@ -11,8 +11,6 @@
 #define WIDTH 512
 #define HEIGHT 512
 
-static mlx_image_t	*image;
-
 typedef struct s_game
 {
 	int				player;
@@ -26,8 +24,10 @@ typedef struct s_game
 	int				size_x;
 	int				size_y;
 	int				exit_reached;
-	int				moves;
+	int				move_count;
 	mlx_t			*mlx;
+	mlx_texture_t	*texture;
+	mlx_image_t		*img;
 }					t_game;
 void				initialize_game(t_game *game);
 void				ft_hook(void *param);
