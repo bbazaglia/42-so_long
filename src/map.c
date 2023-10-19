@@ -1,7 +1,5 @@
-#include "ft_printf.h"
-#include "get_next_line.h"
-#include <fcntl.h>
-#include "MLX42/MLX42.h"
+// #include "/../include/so_long.h"
+#include "so_long.h"
 
 #define WIDTH 512
 #define HEIGHT 512
@@ -56,7 +54,7 @@ int	get_num_lines(char *argv)
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("Error: Error opening file,\n");
+		ft_printf("Error: Error opening file\n");
 		exit(1);
 	}
 	num_lines = 0;

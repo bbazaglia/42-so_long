@@ -6,33 +6,12 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:46:15 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/19 09:27:40 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:43:33 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
-
-int	ft_putnbr(int n)
-{
-	size_t	num;
-	int		count;
-
-	num = (size_t)n;
-	count = 0;
-	if (n < 0)
-	{
-		num *= -1;
-		count += ft_putchar('-');
-	}
-	if (num < 10)
-		count += ft_putchar(num + '0');
-	else
-	{
-		count += ft_putnbr(num / 10);
-		count += ft_putnbr(num % 10);
-	}
-	return (count);
-}
+#include "../include/libft.h"
 
 int	ft_unsigned_putnbr(unsigned int n)
 {

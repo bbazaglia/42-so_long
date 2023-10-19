@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:32:39 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/19 09:40:33 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:46:16 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int					ft_putchar(char c);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+int					ft_putnbr(int n);
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 void				*ft_calloc(size_t nelem, size_t elsize);
 void				*ft_memcpy(void *dest, const void *src, size_t n);

@@ -6,19 +6,12 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:44:59 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/19 09:27:47 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:45:12 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
-
-int	ft_putchar(int c)
-{
-	char	ch;
-
-	ch = (char)c;
-	return (write(1, &ch, 1));
-}
+#include "../include/libft.h"
 
 int	ft_putstr(char *str)
 {
