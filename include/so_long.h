@@ -31,7 +31,9 @@ typedef struct s_game
 	mlx_key_data_t	*keydata;
 }					t_game;
 void				initialize_game(t_game *game);
-void				ft_hook(void *param);
+//void				ft_hook(void *param);
+void				ft_hook(mlx_key_data_t keydata, void *param);
+void				count_moves(t_game *game);
 int					get_num_lines(char *argv);
 void				check_map(char *argv, int num_lines, char **matrix,
 						t_game *game);

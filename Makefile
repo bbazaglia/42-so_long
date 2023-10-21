@@ -1,4 +1,4 @@
-NAME	:= game
+NAME	:= Game
 CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g3
 LIBMLX	:= ./lib/MLX42
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I ./lib/LIBFT/include

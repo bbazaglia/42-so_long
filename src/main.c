@@ -28,7 +28,8 @@ int	main(void)
 		game.img = mlx_texture_to_image(game.mlx, game.texture);
 		if (mlx_image_to_window(game.mlx, game.img, 0, 0) < 0)
 			error_msg("Error loading the image", matrix);
-		mlx_loop_hook(game.mlx, ft_hook, &game);
+		mlx_key_hook(game.mlx, ft_hook, &game);
+		// mlx_loop_hook(game.mlx, ft_hook, &game);
 		mlx_loop(game.mlx);
 		mlx_delete_image(game.mlx, game.img);
 		mlx_delete_texture(game.texture);
