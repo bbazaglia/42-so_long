@@ -6,8 +6,6 @@ void check_map(char *argv, int num_lines, char **matrix, t_game *game)
 	check_characters(matrix, game);
 	check_boundaries(matrix, num_lines);
 	check_rectangle(matrix);
-	if (check_path(game, matrix) == 1)
-		error_msg("There's not a valid path in the map", matrix);
 }
 
 void	check_format(char *argv)
@@ -57,6 +55,7 @@ void	check_characters(char **matrix, t_game *game)
 	}
 	game->size_x = x;
 	game->size_y = y;
+	game->collectible_total = game->collectible;
 	if (game->exit != 1 || game->player != 1 || game->collectible < 1)
 		error_msg("The map must contain 1 exit, at least 1 collectible, and 1 starting position", matrix);
 	if (game->error > 0)

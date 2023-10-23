@@ -15,6 +15,7 @@ typedef struct s_game
 	int				player;
 	int				exit;
 	int				collectible;
+	int				collectible_total;
 	int				space;
 	int				wall;
 	int				error;
@@ -62,3 +63,7 @@ void				load_crystal(t_game *game, char **matrix);
 void				load_images(t_game *game, char **matrix);
 void				place_images(t_game *game, char **matrix);
 void				delete_images(t_game *game);
+void				place_tree(t_game *game, char **matrix);
+void				place_door(t_game *game, char **matrix);
+void				place_crystals(t_game *game, char **matrix);
+void				place_reptile(t_game *game, char **matrix);

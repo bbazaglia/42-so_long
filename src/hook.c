@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 11:04:41 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/23 15:36:50 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:51:59 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,25 @@ void	ft_hook(mlx_key_data_t keydata, void *param)
 		count_moves(game);
 	}
 }
+
+// void	check_game_status(t_game *game)
+// {
+// 	int x;
+// 	int y;
+
+// 	x = 0;
+// 	while (game->size_x > x)
+// 	{
+// 		y = 0;
+// 		while (game->size_y > y)
+// 		{
+// 			if ()
+// 			y++;
+// 		}
+// 		x++;
+// 	}
+// }
+
 
 // mlx_loop_hook(game.mlx, ft_hook, &game);
 // this function works
