@@ -5,10 +5,10 @@ int	main(void)
 	int		num_lines;
 	char	**matrix;
 	char	**new_matrix;
-	int		i;
 	int		argc;
 	char	*argv;
 	t_game	game;
+	int		i;
 
 	argc = 2;
 	argv = "map.ber";
@@ -25,7 +25,8 @@ int	main(void)
 			i++;
 		}
 		ft_printf("%d\n%d\n", game.size_x, game.size_y);
-		game.mlx = mlx_init(WIDTH, HEIGHT, "Test", true);
+		game.mlx = mlx_init(game.size_y * PIXELS, game.size_y * PIXELS,
+				"So Long", true);
 		// game.texture = mlx_load_png("./img/pacman.png");
 		// game.pacman = mlx_texture_to_image(game.mlx, game.texture);
 		// if (mlx_image_to_window(game.mlx, game.pacman, 0, 0) < 0)
@@ -49,5 +50,5 @@ int	main(void)
 // load all images just once
 // one texture to each image
 // image to window
-// create coordinates variables (x and y times barrier size)
-// duplicate matrix
+// create coordinates variables (x and y times PIXELS)
+// duplicate matrix because flood fill will change the original one

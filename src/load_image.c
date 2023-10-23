@@ -25,12 +25,12 @@ void	place_images(t_game *game, char **matrix)
 		{
 			if (matrix[x][y] == 'P')
 			{
-				if (mlx_image_to_window(game->mlx, game->pacman, x * 50, y * 50) < 0)
+				if (mlx_image_to_window(game->mlx, game->pacman, y * PIXELS, x * PIXELS) < 0)
 					error_msg("Error loading the image", matrix);
 			}
 			else if (matrix[x][y] == '1')
 			{
-				if (mlx_image_to_window(game->mlx, game->barrier, x * 50, y * 50) < 0)
+				if (mlx_image_to_window(game->mlx, game->barrier, y * PIXELS, x * PIXELS) < 0)
 					error_msg("Error loading the image", matrix);
 			}
 			y++;

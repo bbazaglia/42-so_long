@@ -8,8 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#define WIDTH 512
-#define HEIGHT 512
+#define PIXELS 50
 
 typedef struct s_game
 {
