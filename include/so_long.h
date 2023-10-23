@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#define PIXELS 50
+#define PIXELS 64
 
 typedef struct s_game
 {
@@ -28,18 +28,18 @@ typedef struct s_game
 	mlx_key_data_t	*keydata;
 	mlx_image_t		*pacman;
 	mlx_image_t		*barrier;
-	mlx_image_t		*coin;
-	mlx_image_t		*door;
+	mlx_image_t		*banana;
+	mlx_image_t		*sphere;
 	mlx_image_t		*background;
 	mlx_texture_t	*pacman_t;
 	mlx_texture_t	*barrier_t;
-	mlx_texture_t	*coin_t;
-	mlx_texture_t	*door_t;
-	mlx_image_t		*background_t;
+	mlx_texture_t	*banana_t;
+	mlx_texture_t	*sphere_t;
+	mlx_texture_t	*background_t;
 }					t_game;
 
 void				initialize_game(t_game *game);
-//void				ft_hook(void *param);
+// void				ft_hook(void *param);
 void				ft_hook(mlx_key_data_t keydata, void *param);
 void				count_moves(t_game *game);
 int					get_num_lines(char *argv);
@@ -54,7 +54,10 @@ void				check_characters(char **matrix, t_game *game);
 void				check_rectangle(char **matrix);
 int					check_path(t_game *game, char **matrix);
 void				flood_fill(char **matrix, t_game *game, int x, int y);
-void				load_pacman(t_game *game);
-void				load_wall(t_game *game);
+void				load_pacman(t_game *game, char **matrix);
+void				load_background(t_game *game, char **matrix);
+void				load_wall(t_game *game, char **matrix);
+void				load_sphere(t_game *game, char **matrix);
+void				load_banana(t_game *game, char **matrix);
 void				place_images(t_game *game, char **matrix);
 void				delete_images(t_game *game);

@@ -27,13 +27,13 @@ int	main(void)
 		ft_printf("%d\n%d\n", game.size_x, game.size_y);
 		game.mlx = mlx_init(game.size_y * PIXELS, game.size_x * PIXELS,
 				"So Long", true);
-		// game.texture = mlx_load_png("./img/pacman.png");
-		// game.pacman = mlx_texture_to_image(game.mlx, game.texture);
-		// if (mlx_image_to_window(game.mlx, game.pacman, 0, 0) < 0)
-		// 	error_msg("Error loading the image", matrix);
-		load_pacman(&game);
-		load_wall(&game);
+		load_background(&game, matrix);
+		load_pacman(&game, matrix);
+		load_wall(&game, matrix);
+		load_sphere(&game, matrix);
+		load_banana(&game, matrix);
 		place_images(&game, new_matrix);
+		// mlx_loop_hook(game.mlx, ft_hook, &game);
 		mlx_key_hook(game.mlx, ft_hook, &game);
 		mlx_loop(game.mlx);
 		// mlx_delete_image(game.mlx, game.pacman);
