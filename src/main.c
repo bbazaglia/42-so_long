@@ -25,7 +25,7 @@ int	main(void)
 			i++;
 		}
 		ft_printf("%d\n%d\n", game.size_x, game.size_y);
-		game.mlx = mlx_init(game.size_y * PIXELS, game.size_y * PIXELS,
+		game.mlx = mlx_init(game.size_y * PIXELS, game.size_x * PIXELS,
 				"So Long", true);
 		// game.texture = mlx_load_png("./img/pacman.png");
 		// game.pacman = mlx_texture_to_image(game.mlx, game.texture);
