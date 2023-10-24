@@ -68,4 +68,5 @@ void				place_tree(t_game *game, char **matrix);
 void				place_door(t_game *game, char **matrix);
 void				place_crystals(t_game *game, char **matrix);
 void				place_reptile(t_game *game, char **matrix);
-void				check_game_status(t_game *game);
+void				collect_crytals(t_game *game);
+void				check_game_status(mlx_key_data_t keydata, t_game *game);
