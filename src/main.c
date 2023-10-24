@@ -40,12 +40,3 @@ int	main(void)
 	else
 		ft_printf("Error: Map file is required as an argument.\n");
 }
-
-// load all images just once
-// one texture to each image
-// image to window
-// create coordinates variables (x and y times PIXELS)
-// duplicate matrix because flood fill will change the original one
-
-// delete crystal image when its collected
-// allow exit only if all crystals are collected

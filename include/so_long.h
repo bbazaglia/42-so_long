@@ -70,3 +70,7 @@ void				place_crystals(t_game *game, char **matrix);
 void				place_reptile(t_game *game, char **matrix);
 void				collect_crytals(t_game *game);
 void				check_game_status(mlx_key_data_t keydata, t_game *game);
+int					check_up_trees(t_game *game);
+int					check_down_trees(t_game *game);
+int					check_left_trees(t_game *game);
+int					check_right_trees(t_game *game);
