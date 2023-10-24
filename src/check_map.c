@@ -42,7 +42,7 @@ void	check_characters(char **matrix, t_game *game)
 			else if (matrix[x][y] == 'E')
 				game->exit++;
 			else if (matrix[x][y] == 'C')
-				game->collectible++;
+				game->collectibles++;
 			else if (matrix[x][y] == '0')
 				game->space++;
 			else if (matrix[x][y] == '1')
@@ -55,8 +55,7 @@ void	check_characters(char **matrix, t_game *game)
 	}
 	game->size_x = x;
 	game->size_y = y;
-	game->collectible_total = game->collectible;
-	if (game->exit != 1 || game->player != 1 || game->collectible < 1)
+	if (game->exit != 1 || game->player != 1 || game->collectibles < 1)
 		error_msg("The map must contain 1 exit, at least 1 collectible, and 1 starting position", matrix);
 	if (game->error > 0)
 		error_msg("The map can be composed of only these 5 characters: P, E, C, 0, 1", matrix);

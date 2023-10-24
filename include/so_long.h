@@ -12,10 +12,11 @@
 
 typedef struct s_game
 {
+	char			**matrix;
 	int				player;
 	int				exit;
-	int				collectible;
-	int				collectible_total;
+	int				collectibles;
+	int				collected;
 	int				space;
 	int				wall;
 	int				error;
@@ -67,3 +68,4 @@ void				place_tree(t_game *game, char **matrix);
 void				place_door(t_game *game, char **matrix);
 void				place_crystals(t_game *game, char **matrix);
 void				place_reptile(t_game *game, char **matrix);
+void				check_game_status(t_game *game);

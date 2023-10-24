@@ -58,7 +58,8 @@ void	initialize_game(t_game *game)
 {
 	game->player = 0;
 	game->exit = 0;
-	game->collectible = 0;
+	game->collectibles = 0;
+	game->collected = 0;
 	game->space = 0;
 	game->wall = 0;
 	game->error = 0;
