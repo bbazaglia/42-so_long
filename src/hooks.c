@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 11:04:41 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/25 10:15:38 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:34:01 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,6 @@ void	collect_crytals(t_game *game)
 	{
 		w = game->reptile->instances[0].x;
 		h = game->reptile->instances[0].y;
-		// ft_printf("w: %d\n", w);
-		// ft_printf("x: %d\n", game->crystal->instances[i].x);
-		// ft_printf("h: %d\n", h);
-		// ft_printf("y: %d\n", game->crystal->instances[i].y);
 		if (game->crystal->instances[i].enabled == true
 			&& h == game->crystal->instances[i].y
 			&& w == game->crystal->instances[i].x)
@@ -192,25 +188,3 @@ int	check_right_trees(t_game *game)
 	}
 	return 0;
 }
-
-// mlx_loop_hook(game.mlx, ft_hook, &game);
-// this function works
-// void	ft_hook(void *param)
-// {
-// 	t_game	*game;
-
-// 	game = (t_game *)param;
-// 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
-// 		mlx_close_window(game->mlx);
-// 	if (mlx_is_key_down(game->mlx, MLX_KEY_UP))
-// 	{
-// 		game->reptile->instances[0].y -= 16;
-// 		count_moves(game);
-// 	}
-// 	if (mlx_is_key_down(game->mlx, MLX_KEY_DOWN))
-// 		game->reptile->instances[0].y += 16;
-// 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
-// 		game->reptile->instances[0].x -= 16;
-// 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
-// 		game->reptile->instances[0].x += 16;
-// }

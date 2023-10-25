@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/25 10:35:18 by bbazagli          #+#    #+#             */
+/*   Updated: 2023/10/25 10:35:22 by bbazagli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	main(void)
@@ -19,7 +31,10 @@ int	main(void)
 		new_matrix = copy_matrix(matrix, game.num_lines);
 		check_map(matrix, new_matrix, &game);
 		if (check_path(&game, new_matrix) == 1)
-			error_msg("There's not a valid path in the map", matrix, new_matrix);
+		{
+			error_msg("There's not a valid path in the map", matrix,
+					new_matrix);
+		}
 		i = 0;
 		while (matrix[i])
 		{

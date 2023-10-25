@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_images.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/25 10:34:28 by bbazagli          #+#    #+#             */
+/*   Updated: 2023/10/25 10:34:34 by bbazagli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	load_images(t_game *game, char **matrix, char **new_matrix)
@@ -9,110 +21,6 @@ void	load_images(t_game *game, char **matrix, char **new_matrix)
 	load_door(game, matrix, new_matrix);
 	place_images(game, matrix, new_matrix);
 }
-
-// void	place_images(t_game *game, char **matrix)
-// {
-// 	int	x;
-// 	int	y;
-
-// 	x = 0;
-// 	while (matrix[x])
-// 	{
-// 		y = 0;
-// 		while (matrix[x][y])
-// 		{
-// 			if (mlx_image_to_window(game->mlx, game->background, y * PIXELS, x * PIXELS) < 0)
-// 				error_msg("Error loading the background image", matrix);
-// 			y++;
-// 		}
-// 		x++;
-// 	}
-// x = 0;
-// while (matrix[x])
-// {
-// 	y = 0;
-// 	while (matrix[x][y])
-// 	{
-// 		if (matrix[x][y] == '1')
-// 		{
-// 			if (mlx_image_to_window(game->mlx, game->tree, y * PIXELS, x * PIXELS) < 0)
-// 				error_msg("Error loading the image", matrix);
-// 		}
-// 		y++;
-// 	}
-// 	x++;
-// }
-// x = 0;
-// while (matrix[x])
-// {
-// 	y = 0;
-// 	while (matrix[x][y])
-// 	{
-// 		if (matrix[x][y] == 'E')
-// 		{
-// 			if (mlx_image_to_window(game->mlx, game->door, y * PIXELS, x * PIXELS) < 0)
-// 				error_msg("Error loading the image", matrix);
-// 		}
-// 		y++;
-// 	}
-// 	x++;
-// }
-// x = 0;
-// while (matrix[x])
-// {
-// 	y = 0;
-// 	while (matrix[x][y])
-// 	{
-// 		if (matrix[x][y] == 'C')
-// 		{
-// 			if (mlx_image_to_window(game->mlx, game->crystal, y * PIXELS, x * PIXELS) < 0)
-// 				error_msg("Error loading the image", matrix);
-// 		}
-// 		y++;
-// 	}
-// 	x++;
-// }
-// x = 0;
-// while (matrix[x])
-// {
-// 	y = 0;
-// 	while (matrix[x][y])
-// 	{
-// 		if (matrix[x][y] == 'P')
-// 		{
-// 			if (mlx_image_to_window(game->mlx, game->reptile, y * PIXELS, x
-// 					* PIXELS) < 0)
-// 				error_msg("Error loading the player image", matrix);
-// 		}
-// 		y++;
-// 	}
-// 	x++;
-// }
-// if (matrix[x][y] == 'P')
-// {
-// 	if (mlx_image_to_window(game->mlx, game->reptile, y * PIXELS, x
-// 			* PIXELS) < 0)
-// 		error_msg("Error loading the image", matrix);
-// }
-// else if (matrix[x][y] == '1')
-// {
-// 	if (mlx_image_to_window(game->mlx, game->tree, y * PIXELS, x
-// 			* PIXELS) < 0)
-// 		error_msg("Error loading the image", matrix);
-// }
-// else if (matrix[x][y] == 'C')
-// {
-// 	if (mlx_image_to_window(game->mlx, game->crystal, y * PIXELS, x
-// 			* PIXELS) < 0)
-// 		error_msg("Error loading the image", matrix);
-// }
-// else if (matrix[x][y] == 'E')
-// {
-// 	if (mlx_image_to_window(game->mlx, game->door, y * PIXELS, x
-// 			* PIXELS) < 0)
-// 		error_msg("Error loading the image", matrix);
-// }
-// }
 
 void	delete_images(t_game *game)
 {
