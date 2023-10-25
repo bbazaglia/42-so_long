@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 10:35:37 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/25 10:38:13 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/25 13:47:21 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ new_matrix);
 	place_door(game, matrix, new_matrix);
 	place_crystals(game, matrix, new_matrix);
 	place_reptile(game, matrix, new_matrix);
+	game->str_moves = mlx_put_string(game->mlx, "Moves:", 25, 25);	
+	game->str_count = mlx_put_string(game->mlx, "0", 90, 25);	
 }
 
 void	place_tree(t_game *game, char **matrix, char **new_matrix)

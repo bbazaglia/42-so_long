@@ -29,6 +29,8 @@ typedef struct s_game
 	int				move_count;
 	mlx_t			*mlx;
 	mlx_key_data_t	*keydata;
+	mlx_image_t		*str_count;
+	mlx_image_t		*str_moves;
 	mlx_image_t		*reptile;
 	mlx_image_t		*tree;
 	mlx_image_t		*crystal;
