@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/25 08:21:59 by bbazagli          #+#    #+#             */
+/*   Updated: 2023/10/25 10:02:51 by bbazagli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-void check_map(char *argv, int num_lines, char **matrix, t_game *game)
+void	check_map(char **matrix, char **new_matrix, t_game *game)
 {
-	check_format(argv);
-	check_characters(matrix, game);
-	check_boundaries(matrix, num_lines);
-	check_rectangle(matrix);
+	initialize_game(game);
+	check_size(matrix, new_matrix, game);
+	check_boundaries(matrix, new_matrix, game->num_lines);
+	check_rectangle(matrix, new_matrix);
 }
 
 void	check_format(char *argv)
@@ -21,47 +33,7 @@ void	check_format(char *argv)
 	}
 }
 
-void	check_characters(char **matrix, t_game *game)
-{
-	int	x;
-	int	y;
-
-	initialize_game(game);
-	x = 0;
-	while (matrix[x])
-	{
-		y = 0;
-		while (matrix[x][y])
-		{
-			if (matrix[x][y] == 'P')
-			{
-				game->player++;
-				game->player_x = x;
-				game->player_y = y;
-			}
-			else if (matrix[x][y] == 'E')
-				game->exit++;
-			else if (matrix[x][y] == 'C')
-				game->collectibles++;
-			else if (matrix[x][y] == '0')
-				game->space++;
-			else if (matrix[x][y] == '1')
-				game->wall++;
-			else
-				game->error++;
-			y++;
-		}
-		x++;
-	}
-	game->size_x = x;
-	game->size_y = y;
-	if (game->exit != 1 || game->player != 1 || game->collectibles < 1)
-		error_msg("The map must contain 1 exit, at least 1 collectible, and 1 starting position", matrix);
-	if (game->error > 0)
-		error_msg("The map can be composed of only these 5 characters: P, E, C, 0, 1", matrix);
-}
-
-void	check_boundaries(char **matrix, int num_lines)
+void	check_boundaries(char **matrix, char **new_matrix, int num_lines)
 {
 	int	col;
 	int	row;
@@ -77,24 +49,24 @@ void	check_boundaries(char **matrix, int num_lines)
 		while (y <= col)
 		{
 			if (x == 0 && matrix[x][y] != '1')
-				error_msg("Boundaries must be set to 1", matrix);
+				error_msg("Boundaries must be set to 1", matrix, new_matrix);
 			if (y == 0 && matrix[x][y] != '1')
-				error_msg("Boundaries must be set to 1", matrix);
+				error_msg("Boundaries must be set to 1", matrix, new_matrix);
 			if (y == col && matrix[x][y] != '1')
-				error_msg("Boundaries must be set to 1", matrix);
+				error_msg("Boundaries must be set to 1", matrix, new_matrix);
 			if (x == row && matrix[x][y] != '1')
-				error_msg("Boundaries must be set to 1", matrix);
+				error_msg("Boundaries must be set to 1", matrix, new_matrix);
 			y++;
 		}
 		x++;
 	}
 }
 
-void	check_rectangle(char **matrix)
+void	check_rectangle(char **matrix, char **new_matrix)
 {
-	int	x;
-	int	y;
-	int	count;
+	int		x;
+	int		y;
+	int		count;
 	size_t	size;
 
 	size = ft_strlen(matrix[0]);
@@ -106,7 +78,7 @@ void	check_rectangle(char **matrix)
 		while (matrix[x][y])
 			y++;
 		if (ft_strlen(matrix[x]) != size)
-			error_msg("The map must be rectangular", matrix);
+			error_msg("The map must be rectangular", matrix, new_matrix);
 		x++;
 	}
 }

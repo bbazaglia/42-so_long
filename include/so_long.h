@@ -1,18 +1,19 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "libft.h"
-#include "MLX42/MLX42.h"
-#include <fcntl.h>
-#include <memory.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#define PIXELS 64
+# include "MLX42/MLX42.h"
+# include "libft.h"
+# include <fcntl.h>
+# include <memory.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# define PIXELS 64
 
 typedef struct s_game
 {
 	char			**matrix;
+	int				num_lines;
 	int				player;
 	int				exit;
 	int				collectibles;
@@ -40,38 +41,59 @@ typedef struct s_game
 	mlx_texture_t	*background_t;
 }					t_game;
 
-void				initialize_game(t_game *game);
-// void				ft_hook(void *param);
-void				ft_hook(mlx_key_data_t keydata, void *param);
-void				count_moves(t_game *game);
+// Build and destroy matrixes
 int					get_num_lines(char *argv);
-void				check_map(char *argv, int num_lines, char **matrix, t_game *game);
 char				**populate_matrix(char *argv, int num_lines);
-void				free_matrix(char **matrix);
-void				error_msg(char *error, char **matrix);
-void				check_boundaries(char **matrix, int num_lines);
+char				**copy_matrix(char **matrix, int num_lines);
+void				free_matrix(char **matrix, char **new_matrix);
+
+// Map checking
+void				check_map(char **matrix, char **new_matrix, t_game *game);
+void				check_boundaries(char **matrix, char **new_matrix,
+						int num_lines);
+void				check_rectangle(char **matrix, char **new_matrix);
 void				check_format(char *argv);
-void				check_characters(char **matrix, t_game *game);
-void				check_rectangle(char **matrix);
+void				check_size(char **matrix, char **new_matrix, t_game *game);
+void				check_characters(char **matrix, t_game *game, int x, int y);
 int					check_path(t_game *game, char **matrix);
 void				flood_fill(char **matrix, t_game *game, int x, int y);
-void				load_reptile(t_game *game, char **matrix);
-void				load_background(t_game *game, char **matrix);
-void				load_tree(t_game *game, char **matrix);
-void				load_door(t_game *game, char **matrix);
-void				load_crystal(t_game *game, char **matrix);
-void				load_images(t_game *game, char **matrix);
-void				place_images(t_game *game, char **matrix);
-void				delete_images(t_game *game);
-void				place_tree(t_game *game, char **matrix);
-void				place_door(t_game *game, char **matrix);
-void				place_crystals(t_game *game, char **matrix);
-void				place_reptile(t_game *game, char **matrix);
-void				collect_crytals(t_game *game);
+
+// Initialize structs values
+void				initialize_game(t_game *game);
+
+// Movements and hooks functions
+void				ft_hook(mlx_key_data_t keydata, void *param);
+void				count_moves(t_game *game);
 void				check_game_status(mlx_key_data_t keydata, t_game *game);
 int					check_up_trees(t_game *game);
 int					check_down_trees(t_game *game);
 int					check_left_trees(t_game *game);
 int					check_right_trees(t_game *game);
+void				collect_crytals(t_game *game);
+
+// Load textures, images and instances of the image
+void				load_reptile(t_game *game, char **matrix,
+						char **new_matrix);
+void				load_background(t_game *game, char **matrix,
+						char **new_matrix);
+void				load_tree(t_game *game, char **matrix, char **new_matrix);
+void				load_door(t_game *game, char **matrix, char **new_matrix);
+void				load_crystal(t_game *game, char **matrix,
+						char **new_matrix);
+void				load_images(t_game *game, char **matrix, char **new_matrix);
+void				place_images(t_game *game, char **matrix,
+						char **new_matrix);
+void				place_tree(t_game *game, char **matrix, char **new_matrix);
+void				place_door(t_game *game, char **matrix, char **new_matrix);
+void				place_crystals(t_game *game, char **matrix,
+						char **new_matrix);
+void				place_reptile(t_game *game, char **matrix,
+						char **new_matrix);
+
+// Delete images
+void				delete_images(t_game *game);
+
+// Error message
+void				error_msg(char *error, char **matrix, char **new_matrix);
 
 #endif

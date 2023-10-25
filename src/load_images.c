@@ -1,13 +1,13 @@
 #include "so_long.h"
 
-void	load_images(t_game *game, char **matrix)
+void	load_images(t_game *game, char **matrix, char **new_matrix)
 {
-	load_background(game, matrix);
-	load_reptile(game, matrix);
-	load_tree(game, matrix);
-	load_crystal(game, matrix);
-	load_door(game, matrix);
-	place_images(game, matrix);
+	load_background(game, matrix, new_matrix);
+	load_reptile(game, matrix, new_matrix);
+	load_tree(game, matrix, new_matrix);
+	load_crystal(game, matrix, new_matrix);
+	load_door(game, matrix, new_matrix);
+	place_images(game, matrix, new_matrix);
 }
 
 // void	place_images(t_game *game, char **matrix)

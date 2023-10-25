@@ -6,6 +6,7 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include -I ./lib/LIBFT/include
 LIBS	:= ./lib/LIBFT/libft.a $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 SRC	:= main.c \
 			check_map.c \
+			check_characters.c \
 			error_msg.c \
 			place_images.c \
 			populate_matrix.c \

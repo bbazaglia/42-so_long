@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void	place_images(t_game *game, char **matrix)
+void	place_images(t_game *game, char **matrix, char **new_matrix)
 {
 	int	x;
 	int	y;
@@ -13,18 +13,18 @@ void	place_images(t_game *game, char **matrix)
 		{
 			if (mlx_image_to_window(game->mlx, game->background, y * PIXELS, x
 					* PIXELS) < 0)
-				error_msg("Error loading the background image", matrix);
+				error_msg("Error loading the background image", matrix, new_matrix);
 			y++;
 		}
 		x++;
 	}
-    place_tree(game, matrix);
-    place_door(game, matrix);
-    place_crystals(game, matrix);
-    place_reptile(game, matrix);
+    place_tree(game, matrix, new_matrix);
+    place_door(game, matrix, new_matrix);
+    place_crystals(game, matrix, new_matrix);
+    place_reptile(game, matrix, new_matrix);
 }
 
-void	place_tree(t_game *game, char **matrix)
+void	place_tree(t_game *game, char **matrix, char **new_matrix)
 {
 	int	x;
 	int	y;
@@ -39,7 +39,7 @@ void	place_tree(t_game *game, char **matrix)
 			{
 				if (mlx_image_to_window(game->mlx, game->tree, y * PIXELS, x
 						* PIXELS) < 0)
-					error_msg("Error loading the tree image", matrix);
+					error_msg("Error loading the tree image", matrix, new_matrix);
 			}
 			y++;
 		}
@@ -47,7 +47,7 @@ void	place_tree(t_game *game, char **matrix)
 	}
 }
 
-void	place_door(t_game *game, char **matrix)
+void	place_door(t_game *game, char **matrix, char **new_matrix)
 {
 	int	x;
 	int	y;
@@ -62,7 +62,7 @@ void	place_door(t_game *game, char **matrix)
 			{
 				if (mlx_image_to_window(game->mlx, game->door, y * PIXELS, x
 						* PIXELS) < 0)
-					error_msg("Error loading the door image", matrix);
+					error_msg("Error loading the door image", matrix, new_matrix);
 			}
 			y++;
 		}
@@ -70,7 +70,7 @@ void	place_door(t_game *game, char **matrix)
 	}
 }
 
-void	place_crystals(t_game *game, char **matrix)
+void	place_crystals(t_game *game, char **matrix, char **new_matrix)
 {
 	int	x;
 	int	y;
@@ -85,7 +85,7 @@ void	place_crystals(t_game *game, char **matrix)
 			{
 				if (mlx_image_to_window(game->mlx, game->crystal, y * PIXELS, x
 						* PIXELS) < 0)
-					error_msg("Error loading the crystal image", matrix);
+					error_msg("Error loading the crystal image", matrix, new_matrix);
 			}
 			y++;
 		}
@@ -93,7 +93,7 @@ void	place_crystals(t_game *game, char **matrix)
 	}
 }
 
-void	place_reptile(t_game *game, char **matrix)
+void	place_reptile(t_game *game, char **matrix, char **new_matrix)
 {
 	int x;
 	int y;
@@ -108,7 +108,7 @@ void	place_reptile(t_game *game, char **matrix)
 			{
 				if (mlx_image_to_window(game->mlx, game->reptile, y * PIXELS, x
 						* PIXELS) < 0)
-					error_msg("Error loading the reptile image", matrix);
+					error_msg("Error loading the reptile image", matrix, new_matrix);
 			}
 			y++;
 		}
