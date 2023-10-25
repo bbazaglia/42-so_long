@@ -6,11 +6,11 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:31:29 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/19 09:28:32 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:43:07 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {

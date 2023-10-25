@@ -6,11 +6,11 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:33:56 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/19 09:28:54 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:43:24 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 int	ft_count_words(char const *s, char c)
 {

@@ -6,11 +6,11 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 14:12:28 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/19 09:23:58 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:41:38 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 void	*ft_calloc(size_t nelem, size_t elsize)
 {

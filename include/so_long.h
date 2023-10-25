@@ -1,7 +1,7 @@
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
-#include "../lib/LIBFT/include/ft_printf.h"
-#include "../lib/LIBFT/include/get_next_line.h"
-#include "../lib/LIBFT/include/get_next_line_bonus.h"
+#include "libft.h"
 #include "MLX42/MLX42.h"
 #include <fcntl.h>
 #include <memory.h>
@@ -45,8 +45,7 @@ void				initialize_game(t_game *game);
 void				ft_hook(mlx_key_data_t keydata, void *param);
 void				count_moves(t_game *game);
 int					get_num_lines(char *argv);
-void				check_map(char *argv, int num_lines, char **matrix,
-						t_game *game);
+void				check_map(char *argv, int num_lines, char **matrix, t_game *game);
 char				**populate_matrix(char *argv, int num_lines);
 void				free_matrix(char **matrix);
 void				error_msg(char *error, char **matrix);
@@ -74,3 +73,5 @@ int					check_up_trees(t_game *game);
 int					check_down_trees(t_game *game);
 int					check_left_trees(t_game *game);
 int					check_right_trees(t_game *game);
+
+#endif

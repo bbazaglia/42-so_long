@@ -6,11 +6,11 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 15:15:39 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/19 09:26:55 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:42:49 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 void	*ft_memset(void *str, int c, size_t n)
 {

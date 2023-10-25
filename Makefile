@@ -1,10 +1,27 @@
 NAME	:= so_long
+CC 		:= cc
 CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g3
 LIBMLX	:= ./lib/MLX42
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I ./lib/LIBFT/include
-LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm ./lib/LIBFT/libft.a 
-SRCS	:= $(shell find ./src -iname "*.c")
-OBJS	:= ${SRCS:.c=.o}
+LIBS	:= ./lib/LIBFT/libft.a $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+SRC	:= main.c \
+			check_map.c \
+			error_msg.c \
+			place_images.c \
+			populate_matrix.c \
+			flood_fill.c \
+			free_matrix.c \
+			hooks.c \
+			load_images.c \
+			load_textures.c 
+
+OBJ	:= ${SRC:.c=.o}
+
+PATH_FILE = src/
+
+SRC_PATH = $(addprefix $(PATH_FILE), $(SRC))
+
+OBJ_PATH = $(addprefix $(PATH_FILE), $(OBJ))
 
 all: libmlx libft $(NAME)
 
@@ -15,18 +32,19 @@ libft:
 libmlx:
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
+$(PATH_FILE)%.o: $(PATH_FILE)%.c
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<\n)"
 
-$(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
+$(NAME): $(OBJ_PATH)
+	@$(CC) $(OBJ_PATH) $(LIBS) -o $(NAME)
 
 clean:
-	@rm -rf $(OBJS)
+	@make -C ./lib/LIBFT clean
+	@rm -rf $(OBJ_PATH)
 	@rm -rf $(LIBMLX)/build
-	@rm -f ./lib/LIBFT/libft.a
 
 fclean: clean
+	@make -C ./lib/LIBFT fclean
 	@rm -rf $(NAME)
 
 re: clean all

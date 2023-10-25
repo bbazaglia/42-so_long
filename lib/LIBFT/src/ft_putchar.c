@@ -6,11 +6,11 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:30:42 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/19 09:28:14 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:42:58 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 int	ft_putchar(char c)
 {

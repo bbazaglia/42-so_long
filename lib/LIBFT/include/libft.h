@@ -6,15 +6,20 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:32:39 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/19 11:46:16 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:03:45 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
 
 typedef struct s_list
 {
@@ -68,5 +73,15 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+int					ft_putstr(const char *str);
+int					ft_putptr(size_t ptr);
+int					ft_unsigned_putnbr(unsigned int n);
+int					ft_puthex(size_t num, char type);
+int					print_format(char specifier, va_list ap);
+int					ft_printf(const char *format, ...);
+char				*ft_read_fd(int fd, char *unfiltered_line, int *bytes_read);
+char				*ft_filter_line(char *unfiltered_line);
+char				*ft_rest_unfiltered(char *unfiltered_line);
+char				*get_next_line(int fd);
 
 #endif

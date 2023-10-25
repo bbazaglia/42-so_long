@@ -6,11 +6,11 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 10:30:57 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/19 09:29:45 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:44:08 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {

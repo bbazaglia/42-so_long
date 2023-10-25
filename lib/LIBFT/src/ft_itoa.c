@@ -6,11 +6,11 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:14:55 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/19 09:24:10 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:41:46 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 size_t	ft_count_digits(size_t n)
 {

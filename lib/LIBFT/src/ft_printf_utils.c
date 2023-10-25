@@ -6,12 +6,11 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:46:15 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/19 11:43:33 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:40:40 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
-#include "../include/libft.h"
+#include "libft.h"
 
 int	ft_unsigned_putnbr(unsigned int n)
 {

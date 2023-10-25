@@ -6,14 +6,13 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:44:59 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/19 11:45:12 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:40:35 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
-#include "../include/libft.h"
+#include "libft.h"
 
-int	ft_putstr(char *str)
+int	ft_putstr(const char *str)
 {
 	int	count;
 

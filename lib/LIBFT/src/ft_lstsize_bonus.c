@@ -6,11 +6,11 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:11:09 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/19 09:26:36 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:42:20 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 int	ft_lstsize(t_list *lst)
 {

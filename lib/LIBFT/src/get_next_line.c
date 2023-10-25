@@ -6,11 +6,11 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 14:12:05 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/19 09:30:39 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:40:13 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/get_next_line.h"
+#include "libft.h"
 
 char	*ft_read_fd(int fd, char *unfiltered_line, int *bytes_read)
 {
