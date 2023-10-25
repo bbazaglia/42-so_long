@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 10:34:28 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/25 13:45:31 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:18:27 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	delete_images(t_game *game)
 	mlx_delete_image(game->mlx, game->background);
 	mlx_delete_image(game->mlx, game->crystal);
 	mlx_delete_image(game->mlx, game->door);
+	mlx_delete_image(game->mlx, game->closed_door);
 	mlx_delete_image(game->mlx, game->str_count);
 	mlx_delete_image(game->mlx, game->str_moves);
 	mlx_delete_texture(game->reptile_t);
@@ -36,4 +37,5 @@ void	delete_images(t_game *game)
 	mlx_delete_texture(game->background_t);
 	mlx_delete_texture(game->crystal_t);
 	mlx_delete_texture(game->door_t);
+	mlx_delete_texture(game->closed_door_t);
 }

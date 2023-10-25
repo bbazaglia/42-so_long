@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 11:04:41 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/25 13:47:16 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/25 13:56:58 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	ft_hook(mlx_key_data_t keydata, void *param)
 	}
 	collect_crytals(game);
 	check_game_status(keydata, game);
-	
-	// how to make the number be replaced by the next count?
 	num = ft_itoa(game->move_count);
 	game->str_count->instances[0].enabled = false;
 	game->str_count = mlx_put_string(game->mlx, num, 90, 25);	

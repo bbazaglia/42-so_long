@@ -35,11 +35,13 @@ typedef struct s_game
 	mlx_image_t		*tree;
 	mlx_image_t		*crystal;
 	mlx_image_t		*door;
+	mlx_image_t		*closed_door;
 	mlx_image_t		*background;
 	mlx_texture_t	*reptile_t;
 	mlx_texture_t	*tree_t;
 	mlx_texture_t	*crystal_t;
 	mlx_texture_t	*door_t;
+	mlx_texture_t	*closed_door_t;
 	mlx_texture_t	*background_t;
 }					t_game;
 

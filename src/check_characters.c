@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 08:38:55 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/25 09:58:01 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:31:12 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,14 @@ void	check_size(char **matrix, char **new_matrix, t_game *game)
 	game->size_y = y;
 	if (game->exit != 1 || game->player != 1 || game->collectibles < 1)
 		error_msg("The map must contain 1 exit, at least 1 \
-collectible, and 1 starting position", matrix, new_matrix);
+collectible, and 1 starting position",
+					matrix,
+					new_matrix);
 	if (game->error > 0)
 		error_msg("The map can be composed of only 5 characters:\
-P, E, C, 0, 1", matrix, new_matrix);
+P, E, C, 0, 1",
+					matrix,
+					new_matrix);
 }
 
 void	check_characters(char **matrix, t_game *game, int x, int y)

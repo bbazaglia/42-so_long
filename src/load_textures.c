@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 10:34:48 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/25 10:34:52 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:22:55 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,8 @@ void	load_door(t_game *game, char **matrix, char **new_matrix)
 	if (!game->door_t)
 		error_msg("Error loading the door texture", matrix, new_matrix);
 	game->door = mlx_texture_to_image(game->mlx, game->door_t);
+	game->closed_door_t = mlx_load_png("./img/x4/closed_door.png");
+	if (!game->closed_door_t)
+		error_msg("Error loading the door texture", matrix, new_matrix);
+	game->closed_door = mlx_texture_to_image(game->mlx, game->closed_door_t);
 }

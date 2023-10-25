@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 10:35:37 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/25 13:47:21 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:30:03 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,15 @@ void	place_door(t_game *game, char **matrix, char **new_matrix)
 		{
 			if (matrix[x][y] == 'E')
 			{
+				if (mlx_image_to_window(game->mlx, game->closed_door, y * PIXELS, \
+x * PIXELS) < 0)
+					error_msg("Error loading the door image", matrix, \
+new_matrix);
 				if (mlx_image_to_window(game->mlx, game->door, y * PIXELS, \
 x * PIXELS) < 0)
 					error_msg("Error loading the door image", matrix, \
 new_matrix);
+				game->door->instances[0].enabled = false;
 			}
 			y++;
 		}
