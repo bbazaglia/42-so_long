@@ -63,12 +63,11 @@ void				initialize_game(t_game *game);
 
 // Movements and hooks functions
 void				ft_hook(mlx_key_data_t keydata, void *param);
-void				count_moves(t_game *game);
 void				check_game_status(mlx_key_data_t keydata, t_game *game);
-int					check_up_trees(t_game *game);
-int					check_down_trees(t_game *game);
-int					check_left_trees(t_game *game);
-int					check_right_trees(t_game *game);
+void				check_up_trees(t_game *game);
+void				check_down_trees(t_game *game);
+void				check_left_trees(t_game *game);
+void				check_right_trees(t_game *game);
 void				collect_crytals(t_game *game);
 
 // Load textures, images and instances of the image

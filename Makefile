@@ -13,6 +13,7 @@ SRC	:= main.c \
 			flood_fill.c \
 			free_matrix.c \
 			hooks.c \
+			hooks_utils.c \
 			load_images.c \
 			load_textures.c 
 
