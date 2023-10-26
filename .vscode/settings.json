@@ -2,6 +2,8 @@
     "files.associations": {
         "mlx42.h": "c",
         "ft_printf_bonus.h": "c",
-        "libft.h": "c"
+        "libft.h": "c",
+        "so_long_bonus.h": "c",
+        "unistd.h": "c"
     }
 }

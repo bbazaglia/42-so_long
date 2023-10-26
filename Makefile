@@ -1,10 +1,16 @@
-NAME	:= so_long
-CC 		:= cc
-CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g3
-LIBMLX	:= ./lib/MLX42
-HEADERS	:= -I ./include -I $(LIBMLX)/include -I ./lib/LIBFT/include
-LIBS	:= ./lib/LIBFT/libft.a $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
-SRC	:= main.c \
+NAME = so_long
+
+NAME_BONUS = so_long_bonus
+
+CC = cc
+
+CFLAGS = -Wextra -Wall -Werror -Wunreachable-code -Ofast -g3
+
+HEADERS = -I ./include -I ./lib/MLX42/include -I ./lib/LIBFT/include
+
+LIBS = ./lib/LIBFT/libft.a ./lib/MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
+
+SRC	= $(addprefix ./src/, main.c \
 			check_map.c \
 			check_characters.c \
 			error_msg.c \
@@ -15,40 +21,58 @@ SRC	:= main.c \
 			hooks.c \
 			hooks_utils.c \
 			load_images.c \
-			load_textures.c 
+			load_textures.c)
 
-OBJ	:= ${SRC:.c=.o}
+BONUS_SRC = $(addprefix ./bonus/, main_bonus.c \
+			check_map_bonus.c \
+			check_characters_bonus.c \
+			error_msg_bonus.c \
+			place_images_bonus.c \
+			populate_matrix_bonus.c \
+			flood_fill_bonus.c \
+			free_matrix_bonus.c \
+			hooks_bonus.c \
+			hooks_utils_bonus.c \
+			load_images_bonus.c \
+			load_textures_bonus.c)
 
-PATH_FILE = src/
+OBJ	= ${SRC:%.c=%.o}
 
-SRC_PATH = $(addprefix $(PATH_FILE), $(SRC))
-
-OBJ_PATH = $(addprefix $(PATH_FILE), $(OBJ))
+BONUS_OBJ = ${BONUS_SRC:%.c=%.o}
 
 all: libmlx libft $(NAME)
+
+$(NAME): $(OBJ)
+	@$(CC) $(OBJ) $(LIBS) -o $(NAME)
+
+%.o: %.c
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<\n)"
+
+bonus: libmlx libft $(NAME_BONUS)
+
+$(NAME_BONUS): $(BONUS_OBJ)
+	@$(CC) $(BONUS_OBJ) $(LIBS) -o $(NAME_BONUS)
 
 libft:
 	@make -C ./lib/LIBFT 
 	@cp ./lib/LIBFT/libft.a $(NAME)
 
 libmlx:
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
-
-$(PATH_FILE)%.o: $(PATH_FILE)%.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<\n)"
-
-$(NAME): $(OBJ_PATH)
-	@$(CC) $(OBJ_PATH) $(LIBS) -o $(NAME)
+	@cmake ./lib/MLX42 -B ./lib/MLX42/build && make -C ./lib/MLX42/build -j4
 
 clean:
 	@make -C ./lib/LIBFT clean
-	@rm -rf $(OBJ_PATH)
-	@rm -rf $(LIBMLX)/build
+	@rm -rf $(OBJ)
+	@rm -rf ./lib/MLX42/build
+	@rm -rf $(BONUS_OBJ)
 
 fclean: clean
 	@make -C ./lib/LIBFT fclean
 	@rm -rf $(NAME)
+	@rm -rf $(NAME_BONUS)
 
 re: clean all
 
-.PHONY: all, clean, fclean, re, libmlx, libft
+.PHONY: all, clean, fclean, re, libmlx, libft, bonus
+
+
