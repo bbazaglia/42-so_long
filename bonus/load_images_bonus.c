@@ -6,13 +6,11 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:25:35 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/25 15:27:24 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/26 10:37:39 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-#include "so_long.h"
 
 void	load_images(t_game *game, char **matrix, char **new_matrix)
 {
@@ -29,7 +27,6 @@ void	delete_images(t_game *game)
 	mlx_delete_image(game->mlx, game->reptile);
 	mlx_delete_image(game->mlx, game->tree);
 	mlx_delete_image(game->mlx, game->background);
-	mlx_delete_image(game->mlx, game->crystal);
 	mlx_delete_image(game->mlx, game->door);
 	mlx_delete_image(game->mlx, game->closed_door);
 	mlx_delete_image(game->mlx, game->str_count);
@@ -41,7 +38,6 @@ void	delete_images(t_game *game)
 	mlx_delete_texture(game->reptile_t);
 	mlx_delete_texture(game->tree_t);
 	mlx_delete_texture(game->background_t);
-	mlx_delete_texture(game->crystal_t);
 	mlx_delete_texture(game->door_t);
 	mlx_delete_texture(game->closed_door_t);
     mlx_delete_texture(game->flower1_t);

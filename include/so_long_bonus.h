@@ -83,7 +83,8 @@ void				enable_instances(t_game *game);
 void				disable_instances(t_game *game, int i);
 
 // Load textures, images and instances of the image
-void				load_reptile(t_game *game, char **matrix, char **new_matrix);
+void				load_reptile(t_game *game, char **matrix,
+						char **new_matrix);
 void				load_background(t_game *game, char **matrix,
 						char **new_matrix);
 void				load_tree(t_game *game, char **matrix, char **new_matrix);

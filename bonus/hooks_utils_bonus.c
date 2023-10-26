@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:42:40 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/25 16:00:30 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:21:44 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,18 @@
 
 void	collect_flowers(t_game *game)
 {
-	int	i;
 	int	w;
 	int	h;
+	int i;
 
 	i = 0;
-	enable_instances(game);
 	while (i < game->collected)
 	{
 		w = game->reptile->instances[0].x;
 		h = game->reptile->instances[0].y;
-		if ((h == game->flower1->instances[i].y
-				|| h == game->flower2->instances[i].y
-				|| h == game->flower3->instances[i].y
-				|| h == game->flower3->instances[i].y)
-			&& (w == game->flower1->instances[i].x
-				|| w == game->flower2->instances[i].x
-				|| w == game->flower3->instances[i].x
-				|| w == game->flower4->instances[i].x))
+		if (game->flower1->instances[i].enabled == true
+			&& h == game->flower1->instances[i].y
+			&& w == game->flower1->instances[i].x)
 		{
 			disable_instances(game, i);
 			game->collectibles--;
@@ -42,22 +36,18 @@ void	collect_flowers(t_game *game)
 
 void	enable_instances(t_game *game)
 {
-	sleep(1);
 	game->flower1->instances[0].enabled = false;
 	game->flower2->instances[0].enabled = true;
 	game->flower3->instances[0].enabled = false;
 	game->flower4->instances[0].enabled = false;
-	sleep(1);
 	game->flower1->instances[0].enabled = false;
 	game->flower2->instances[0].enabled = false;
 	game->flower3->instances[0].enabled = true;
 	game->flower4->instances[0].enabled = false;
-	sleep(1);
 	game->flower1->instances[0].enabled = false;
 	game->flower2->instances[0].enabled = false;
 	game->flower3->instances[0].enabled = true;
 	game->flower4->instances[0].enabled = false;
-	sleep(1);
 	game->flower1->instances[0].enabled = false;
 	game->flower2->instances[0].enabled = false;
 	game->flower3->instances[0].enabled = false;
