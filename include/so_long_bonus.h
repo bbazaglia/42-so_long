@@ -81,6 +81,8 @@ void				check_right_trees(t_game *game);
 void				collect_flowers(t_game *game);
 void				enable_instances(t_game *game);
 void				disable_instances(t_game *game, int i);
+void				flower_animation(t_game *game, int i);
+// void				animation_wrapper(void *param);
 
 // Load textures, images and instances of the image
 void				load_reptile(t_game *game, char **matrix,
