@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:28:52 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/27 14:03:25 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:23:02 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,12 +101,12 @@ void	place_flowers(t_game *game, char **matrix, char **new_matrix)
 		{
 			if (matrix[x][y] == 'C')
 			{
-				if ((mlx_image_to_window(game->mlx, game->flower4, y * PIXELS, x
+				if ((mlx_image_to_window(game->mlx, game->flower[3], y * PIXELS, x
 							* PIXELS) < 0) || (mlx_image_to_window(game->mlx,
-							game->flower3, y * PIXELS, x * PIXELS) < 0)
-					|| (mlx_image_to_window(game->mlx, game->flower2, y
+							game->flower[2], y * PIXELS, x * PIXELS) < 0)
+					|| (mlx_image_to_window(game->mlx, game->flower[1], y
 							* PIXELS, x * PIXELS) < 0)
-					|| (mlx_image_to_window(game->mlx, game->flower1, y
+					|| (mlx_image_to_window(game->mlx, game->flower[0], y
 							* PIXELS, x * PIXELS) < 0))
 					error_msg("loading flowers images", matrix, new_matrix);
 			}

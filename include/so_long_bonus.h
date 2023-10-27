@@ -38,20 +38,20 @@ typedef struct s_game
 	mlx_image_t		*door;
 	mlx_image_t		*closed_door;
 	mlx_image_t		*background;
-	mlx_image_t		*flower1;
-	mlx_image_t		*flower2;
-	mlx_image_t		*flower3;
-	mlx_image_t		*flower4;
+	mlx_image_t		*flower[4];
+	// mlx_image_t		*flower2;
+	// mlx_image_t		*flower3;
+	// mlx_image_t		*flower4;
 	mlx_image_t		*flame;
 	mlx_texture_t	*reptile_t;
 	mlx_texture_t	*tree_t;
 	mlx_texture_t	*door_t;
 	mlx_texture_t	*closed_door_t;
 	mlx_texture_t	*background_t;
-	mlx_texture_t	*flower1_t;
-	mlx_texture_t	*flower2_t;
-	mlx_texture_t	*flower3_t;
-	mlx_texture_t	*flower4_t;
+	mlx_texture_t	*flower_t[4];
+	// mlx_texture_t	*flower2_t;
+	// mlx_texture_t	*flower3_t;
+	// mlx_texture_t	*flower4_t;
 	mlx_texture_t	*flame_t;
 
 }					t_game;
@@ -89,7 +89,7 @@ void				disable_instances(t_game *game, int i);
 void				flower_animation(t_game *game, int i);
 void				check_flame(t_game *game);
 
-// void				animation_wrapper(void *param);
+void				animation_wrapper(void *param);
 
 // Load textures, images and instances of the image
 void				load_reptile(t_game *game, char **matrix,

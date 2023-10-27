@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:13:57 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/27 12:04:35 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:31:32 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(void)
 		game.mlx = mlx_init(game.size_y * PIXELS, game.size_x * PIXELS,
 				"So Long", true);
 		load_images(&game, matrix, new_matrix);
-		// mlx_loop_hook(game.mlx, animation_wrapper, &game);
+		mlx_loop_hook(game.mlx, animation_wrapper, &game);
 		mlx_key_hook(game.mlx, ft_hook, &game);
 		mlx_loop(game.mlx);
 		delete_images(&game);

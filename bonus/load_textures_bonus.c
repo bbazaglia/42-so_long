@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:25:10 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/25 15:27:39 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/27 15:44:14 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,38 @@ void	load_door(t_game *game, char **matrix, char **new_matrix)
 
 void	load_flowers(t_game *game, char **matrix, char **new_matrix)
 {
-	game->flower1_t = mlx_load_png("./img/x4/flower1.png");
-	if (!game->flower1_t)
-		error_msg("Error loading the flower texture", matrix, new_matrix);
-	game->flower1 = mlx_texture_to_image(game->mlx, game->flower1_t);
-	game->flower2_t = mlx_load_png("./img/x4/flower2.png");
-	if (!game->flower2_t)
-		error_msg("Error loading the flower texture", matrix, new_matrix);
-	game->flower2 = mlx_texture_to_image(game->mlx, game->flower2_t);
-	game->flower3_t = mlx_load_png("./img/x4/flower3.png");
-	if (!game->flower3_t)
-		error_msg("Error loading the flower texture", matrix, new_matrix);
-	game->flower3 = mlx_texture_to_image(game->mlx, game->flower3_t);
-	game->flower4_t = mlx_load_png("./img/x4/flower4.png");
-	if (!game->flower4_t)
-		error_msg("Error loading the flower texture", matrix, new_matrix);
-	game->flower4 = mlx_texture_to_image(game->mlx, game->flower4_t);
+	int i;
+	char *path[4];
+	
+	path[0] = "./img/x4/flower1.png";
+	path[1] = "./img/x4/flower2.png";
+	path[2] = "./img/x4/flower3.png";
+	path[3] = "./img/x4/flower4.png";
+	
+	i = 0;
+	while (i < 4)
+	{
+		game->flower_t[i] = mlx_load_png(path[i]);
+		if (!game->flower_t[i])
+			error_msg("Error loading the flower texture", matrix, new_matrix);
+		game->flower[i] = mlx_texture_to_image(game->mlx, game->flower_t[i]);
+		i++;
+	}
+	
+	// game->flower1_t = mlx_load_png("./img/x4/flower1.png");
+	// if (!game->flower1_t)
+	// 	error_msg("Error loading the flower texture", matrix, new_matrix);
+	// game->flower1 = mlx_texture_to_image(game->mlx, game->flower1_t);
+	// game->flower2_t = mlx_load_png("./img/x4/flower2.png");
+	// if (!game->flower2_t)
+	// 	error_msg("Error loading the flower texture", matrix, new_matrix);
+	// game->flower2 = mlx_texture_to_image(game->mlx, game->flower2_t);
+	// game->flower3_t = mlx_load_png("./img/x4/flower3.png");
+	// if (!game->flower3_t)
+	// 	error_msg("Error loading the flower texture", matrix, new_matrix);
+	// game->flower3 = mlx_texture_to_image(game->mlx, game->flower3_t);
+	// game->flower4_t = mlx_load_png("./img/x4/flower4.png");
+	// if (!game->flower4_t)
+	// 	error_msg("Error loading the flower texture", matrix, new_matrix);
+	// game->flower4 = mlx_texture_to_image(game->mlx, game->flower4_t);
 }

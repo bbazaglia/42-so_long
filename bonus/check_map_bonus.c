@@ -6,13 +6,13 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:04:18 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/25 16:04:28 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:22:57 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	check_map(char **matrix, char **new_matrix, t_game *game)
+void	check_map(char **matrix, char **new_matrix, t_game *game)	
 {
 	initialize_game(game);
 	check_size(matrix, new_matrix, game);

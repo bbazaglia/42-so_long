@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:42:40 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/27 12:10:25 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:09:34 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,46 +57,78 @@ void	collect_flowers(t_game *game)
 	int	w;
 	int	h;
 	int	i;
+	int	j;
 
 	i = 0;
 	while (i < game->collected)
 	{
 		w = game->reptile->instances[0].x;
 		h = game->reptile->instances[0].y;
-		flower_animation(game, i);
-		if ((game->flower1->instances[i].enabled
-		|| game->flower2->instances[i].enabled
-		|| game->flower3->instances[i].enabled
-		|| game->flower4->instances[i].enabled)
-		&& (h == game->flower1->instances[i].y && w == game->flower1->instances[i].x))
+		j = 0;
+		while (j < 4)
 		{
-			disable_instances(game, i);
-			game->collectibles--;
+			if (game->flower[j]->instances[i].enabled)
+			{
+				// flower_animation(game, i);
+				if (h == game->flower[j]->instances[i].y
+					&& w == game->flower[j]->instances[i].x)
+				{
+					disable_instances(game, i);
+					game->collectibles--;
+				}
+			}
+			j++;
 		}
 		i++;
 	}
 }
 
-void	set_active_flower(t_game *game, int i, int active_flower)
+// void	set_active_flower(t_game *game, int i, int active_flower)
+// {
+// 	disable_instances(game, i);
+// 	if (active_flower == 1)
+// 		game->flower[0]->instances[i].enabled = true;
+// 	else if (active_flower == 2)
+// 		game->flower[1]->instances[i].enabled = true;
+// 	else if (active_flower == 3)
+// 		game->flower[2]->instances[i].enabled = true;
+// 	else if (active_flower == 4)
+// 		game->flower[3]->instances[i].enabled = true;
+// }
+
+void	disable_instances(t_game *game, int j)
 {
-	disable_instances(game, i);
-	if (active_flower == 1)
-		game->flower1->instances[i].enabled = true;
-	else if (active_flower == 2)
-		game->flower2->instances[i].enabled = true;
-	else if (active_flower == 3)
-		game->flower3->instances[i].enabled = true;
-	else if (active_flower == 4)
-		game->flower4->instances[i].enabled = true;
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		game->flower[i]->instances[j].enabled = false;
+		i++;
+	}
+	// game->flower1->instances[i].enabled = false;
+	// game->flower2->instances[i].enabled = false;
+	// game->flower3->instances[i].enabled = false;
+	// game->flower4->instances[i].enabled = false;
 }
 
-void	disable_instances(t_game *game, int i)
-{
-	game->flower1->instances[i].enabled = false;
-	game->flower2->instances[i].enabled = false;
-	game->flower3->instances[i].enabled = false;
-	game->flower4->instances[i].enabled = false;
-}
+// // // doesnt use time
+// void	flower_animation(t_game *game, int i)
+// {
+// 	static int	active_flower;
+
+// 	active_flower = 1;
+// 	// if (!game->flower1->instances[i].enabled
+// 	// 	&& !game->flower2->instances[i].enabled
+// 	// 	&& !game->flower3->instances[i].enabled
+// 	// 	&& !game->flower4->instances[i].enabled)
+// 	// 	active_flower = 1;
+// 	// else
+// 	// {
+// 	set_active_flower(game, i, active_flower);
+// 	active_flower = (active_flower % 4) + 1;
+// 	// }
+// }
 
 // try to set the shift according to the time
 // void	flower_animation(t_game *game, int i)
@@ -169,7 +201,8 @@ void	disable_instances(t_game *game, int i)
 // 	flower_animation(game);
 // }
 
-// the i increment will be different from the i increment in collectflowers function, so it wont work
+// the i increment will be different from the i increment in collectflowers function,
+//so it wont work
 // void	flower_animation(t_game *game)
 // {
 // 	static double	animation_speed;
@@ -207,12 +240,12 @@ void	disable_instances(t_game *game, int i)
 
 // void	flower_animation(t_game *game)
 // {
-// 	static double	animation_speed;
-// 	clock_t			last_shift;
-// 	clock_t			current_time;
-// 	double			elapsed_time;
-// 	int				i;
-// 	int				active_flower;
+// 	static double animation_speed;
+// 	clock_t last_shift;
+// 	clock_t current_time;
+// 	double elapsed_time;
+// 	int i;
+// 	int active_flower;
 
 // 	animation_speed = 0.2;
 // 	last_shift = 0;
@@ -241,20 +274,3 @@ void	disable_instances(t_game *game, int i)
 // 		last_shift = current_time;
 // 	}
 // }
-
-// // doesnt use time
-void	flower_animation(t_game *game, int i)
-{
-	static int active_flower = 1;
-
-	if (!game->flower1->instances[i].enabled
-		&& !game->flower2->instances[i].enabled
-		&& !game->flower3->instances[i].enabled
-		&& !game->flower4->instances[i].enabled)
-		active_flower = 1;
-	else
-	{
-		set_active_flower(game, i, active_flower);
-		active_flower = (active_flower % 4) + 1;
-	}
-}
