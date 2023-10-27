@@ -87,6 +87,8 @@ void				collect_flowers(t_game *game);
 void				enable_instances(t_game *game);
 void				disable_instances(t_game *game, int i);
 void				flower_animation(t_game *game, int i);
+void				check_flame(t_game *game);
+
 // void				animation_wrapper(void *param);
 
 // Load textures, images and instances of the image

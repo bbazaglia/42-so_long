@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:11:24 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/27 11:22:36 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:09:11 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	ft_hook(mlx_key_data_t keydata, void *param)
 		if (keydata.key == MLX_KEY_RIGHT)
 			check_right_trees(game);
 	}
+	check_flame(game);
 	collect_flowers(game);
 	check_game_status(keydata, game);
 	num = ft_itoa(game->move_count);

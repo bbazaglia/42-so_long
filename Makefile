@@ -25,6 +25,7 @@ SRC	= $(addprefix ./src/, main.c \
 
 BONUS_SRC = $(addprefix ./bonus/, main_bonus.c \
 			check_map_bonus.c \
+			flame.c \
 			check_characters_bonus.c \
 			error_msg_bonus.c \
 			place_images_bonus.c \
