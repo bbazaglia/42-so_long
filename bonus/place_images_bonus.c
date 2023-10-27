@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:28:52 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/25 15:44:17 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:03:25 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	place_images(t_game *game, char **matrix, char **new_matrix)
 	place_door(game, matrix, new_matrix);
 	place_flowers(game, matrix, new_matrix);
 	place_reptile(game, matrix, new_matrix);
+	place_flame(game, matrix, new_matrix);
 	game->str_moves = mlx_put_string(game->mlx, "Moves:", 25, 25);
 	game->str_count = mlx_put_string(game->mlx, "0", 90, 25);
 }
@@ -53,7 +54,7 @@ void	place_tree(t_game *game, char **matrix, char **new_matrix)
 			{
 				if (mlx_image_to_window(game->mlx, game->tree, y * PIXELS, x
 						* PIXELS) < 0)
-					error_msg("loading trees images", matrix, new_matrix);
+					error_msg("loading flame image", matrix, new_matrix);
 			}
 			y++;
 		}

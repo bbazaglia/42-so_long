@@ -7,7 +7,9 @@
 # include <memory.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <time.h>
 # include <unistd.h>
+
 # define PIXELS 64
 
 typedef struct s_game
@@ -40,6 +42,7 @@ typedef struct s_game
 	mlx_image_t		*flower2;
 	mlx_image_t		*flower3;
 	mlx_image_t		*flower4;
+	mlx_image_t		*flame;
 	mlx_texture_t	*reptile_t;
 	mlx_texture_t	*tree_t;
 	mlx_texture_t	*door_t;
@@ -49,6 +52,8 @@ typedef struct s_game
 	mlx_texture_t	*flower2_t;
 	mlx_texture_t	*flower3_t;
 	mlx_texture_t	*flower4_t;
+	mlx_texture_t	*flame_t;
+
 }					t_game;
 
 // Build and destroy matrixes
@@ -96,12 +101,14 @@ void				load_flowers(t_game *game, char **matrix,
 void				load_images(t_game *game, char **matrix, char **new_matrix);
 void				place_images(t_game *game, char **matrix,
 						char **new_matrix);
+void				load_flame(t_game *game, char **matrix, char **new_matrix);
 void				place_tree(t_game *game, char **matrix, char **new_matrix);
 void				place_door(t_game *game, char **matrix, char **new_matrix);
 void				place_flowers(t_game *game, char **matrix,
 						char **new_matrix);
 void				place_reptile(t_game *game, char **matrix,
 						char **new_matrix);
+void				place_flame(t_game *game, char **matrix, char **new_matrix);
 
 // Delete images
 void				delete_images(t_game *game);
