@@ -6,58 +6,11 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:11:24 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/27 16:55:37 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/31 14:35:53 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-void	draw(t_game *game)
-{
-	static int	i;
-	static int	j;
-	//int	x;
-	// int	y;
-
-	if (j == 50)
-	{
-		i++;
-		mlx_image_to_window(game->mlx, game->flower[i], 128, 128);	
-		if (i == 3)
-			i = 0;
-		j = 0;
-	}
-	j++;
-	//x = 0;
-	// while (game->matrix[x])
-	// {
-		// ft_printf("%i\n", x);
-	// 	y = 0;
-	// 	while (game->matrix[x][y])
-	// 	{
-	// 		if (game->matrix[x][y] == 'C')
-	// 		{
-	// 			i = 0;
-	// 			ft_printf("%d\n%d\n", y * PIXELS, x * PIXELS);
-	// 			while (i < game->collected)
-	// 			{
-	// 				// mlx_image_to_window(game->mlx, game->flower[i], y * PIXELS, x * PIXELS);
-	// 				i++;
-	// 			}
-	// 		}
-	// 		y++;
-	// 	}
-	// 	x++;
-	// }
-}
-
-void	animation_wrapper(void *param)
-{
-	t_game	*game;
-
-	game = (t_game *)param;
-	draw(game);
-}
 
 void	ft_hook(mlx_key_data_t keydata, void *param)
 {

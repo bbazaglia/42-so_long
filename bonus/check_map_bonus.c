@@ -6,18 +6,92 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:04:18 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/27 14:22:57 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/31 14:29:28 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	check_map(char **matrix, char **new_matrix, t_game *game)	
+void	check_map(t_game *game)	
 {
 	initialize_game(game);
-	check_size(matrix, new_matrix, game);
-	check_boundaries(matrix, new_matrix, game->num_lines);
-	check_rectangle(matrix, new_matrix);
+	check_size(game);
+	check_boundaries(game);
+	check_rectangle(game);
+}
+
+void	check_size(t_game *game)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (game->matrix[x])
+	{
+		y = 0;
+		while (game->matrix[x][y])
+		{
+			check_characters(game, x, y);
+			y++;
+		}
+		x++;
+	}
+	game->size_x = x;
+	game->size_y = y;
+	if (game->exit != 1 || game->player != 1 || game->collectibles < 1)
+		error_msg("The map must contain 1 exit, at least 1 collectible, and 1 starting position", game);
+	if (game->error > 0)
+		error_msg("The map can be composed of only 6 characters:P, E, C, 0, 1, F", game);
+}
+
+void	check_boundaries(t_game *game)
+{
+	int	col;
+	int	row;
+	int	x;
+	int	y;
+
+	col = ft_strlen(game->matrix[0]) - 1;
+	row = game->num_lines - 1;
+	x = 0;
+	while (x <= row)
+	{
+		y = 0;
+		while (y <= col)
+		{
+			if (x == 0 && game->matrix[x][y] != '1')
+				error_msg("Boundaries must be set to 1", game);
+			if (y == 0 && game->matrix[x][y] != '1')
+				error_msg("Boundaries must be set to 1", game);
+			if (y == col && game->matrix[x][y] != '1')
+				error_msg("Boundaries must be set to 1", game);
+			if (x == row && game->matrix[x][y] != '1')
+				error_msg("Boundaries must be set to 1", game);
+			y++;
+		}
+		x++;
+	}
+}
+
+void	check_rectangle(t_game *game)
+{
+	int		x;
+	int		y;
+	int		count;
+	size_t	size;
+
+	size = ft_strlen(game->matrix[0]);
+	x = 0;
+	while (game->matrix[x])
+	{
+		y = 0;
+		count = 0;
+		while (game->matrix[x][y])
+			y++;
+		if (ft_strlen(game->matrix[x]) != size)
+			error_msg("The map must be rectangular", game);
+		x++;
+	}
 }
 
 void	check_format(char *argv)
@@ -30,55 +104,5 @@ void	check_format(char *argv)
 	{
 		ft_printf("Error: The file must be .ber format\n.");
 		exit(1);
-	}
-}
-
-void	check_boundaries(char **matrix, char **new_matrix, int num_lines)
-{
-	int	col;
-	int	row;
-	int	x;
-	int	y;
-
-	col = ft_strlen(matrix[0]) - 1;
-	row = num_lines - 1;
-	x = 0;
-	while (x <= row)
-	{
-		y = 0;
-		while (y <= col)
-		{
-			if (x == 0 && matrix[x][y] != '1')
-				error_msg("Boundaries must be set to 1", matrix, new_matrix);
-			if (y == 0 && matrix[x][y] != '1')
-				error_msg("Boundaries must be set to 1", matrix, new_matrix);
-			if (y == col && matrix[x][y] != '1')
-				error_msg("Boundaries must be set to 1", matrix, new_matrix);
-			if (x == row && matrix[x][y] != '1')
-				error_msg("Boundaries must be set to 1", matrix, new_matrix);
-			y++;
-		}
-		x++;
-	}
-}
-
-void	check_rectangle(char **matrix, char **new_matrix)
-{
-	int		x;
-	int		y;
-	int		count;
-	size_t	size;
-
-	size = ft_strlen(matrix[0]);
-	x = 0;
-	while (matrix[x])
-	{
-		y = 0;
-		count = 0;
-		while (matrix[x][y])
-			y++;
-		if (ft_strlen(matrix[x]) != size)
-			error_msg("The map must be rectangular", matrix, new_matrix);
-		x++;
 	}
 }

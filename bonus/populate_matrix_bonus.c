@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:13:05 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/27 10:40:10 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:48:20 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,53 +37,51 @@ int	get_num_lines(char *argv)
 	return (num_lines);
 }
 
-char	**populate_matrix(char *argv, int num_lines)
+char	**populate_matrix(char *argv, t_game *game)
 {
 	int		fd;
-	char	**matrix;
 	int		i;
 	int		len;
 
-	matrix = malloc(sizeof(char *) * (num_lines + 1));
-	if (matrix == NULL)
-		error_msg("Memory allocation failed", NULL, NULL);
+	game->matrix = malloc(sizeof(char *) * (game->num_lines + 1));
+	if (game->matrix == NULL)
+		error_msg("Memory allocation failed", game);
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
-		error_msg("Failed to open file", matrix, NULL);
+		error_msg("Failed to open file", game);
 	i = 0;
-	while (i < num_lines)
+	while (i < game->num_lines)
 	{
-		matrix[i] = get_next_line(fd);
-		if (matrix[i] == NULL)
-			error_msg("Failed to read matrix line", matrix, NULL);
-		len = ft_strlen(matrix[i]);
-		if (matrix[i][len - 1] == '\n')
-			matrix[i][len - 1] = '\0';
+		game->matrix[i] = get_next_line(fd);
+		if (game->matrix[i] == NULL)
+			error_msg("Failed to read matrix line", game);
+		len = ft_strlen(game->matrix[i]);
+		if (game->matrix[i][len - 1] == '\n')
+			game->matrix[i][len - 1] = '\0';
 		i++;
 	}
-	matrix[i] = NULL;
+	game->matrix[i] = NULL;
 	close(fd);
-	return (matrix);
+	return (game->matrix);
 }
 
-char	**copy_matrix(char **matrix, int num_lines)
+char	**copy_matrix(t_game *game)
 {
 	int		i;
-	char	**new_matrix;
 
-	new_matrix = malloc(sizeof(char *) * (num_lines + 1));
-	if (new_matrix == NULL)
-		error_msg("Memory allocation failed", NULL, matrix);
+	game->new_matrix = malloc(sizeof(char *) * (game->num_lines + 1));
+	if (game->new_matrix == NULL)
+		error_msg("Memory allocation failed", game);
 	i = 0;
-	while (matrix[i])
+	while (game->matrix[i])
 	{
-		new_matrix[i] = ft_strdup(matrix[i]);
-		if (new_matrix[i] == NULL)
-			error_msg("Memory allocation failed", new_matrix, matrix);
+		game->new_matrix[i] = ft_strdup(game->matrix[i]);
+		if (game->new_matrix[i] == NULL)
+			error_msg("Memory allocation failed", game);
 		i++;
 	}
-	new_matrix[i] = NULL;
-	return (new_matrix);
+	game->new_matrix[i] = NULL;
+	return (game->new_matrix);
 }
 
 void	initialize_game(t_game *game)

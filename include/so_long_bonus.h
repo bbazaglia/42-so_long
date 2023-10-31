@@ -15,6 +15,7 @@
 typedef struct s_game
 {
 	char			**matrix;
+	char			**new_matrix;
 	int				num_lines;
 	int				player;
 	int				exit;
@@ -58,20 +59,19 @@ typedef struct s_game
 
 // Build and destroy matrixes
 int					get_num_lines(char *argv);
-char				**populate_matrix(char *argv, int num_lines);
-char				**copy_matrix(char **matrix, int num_lines);
-void				free_matrix(char **matrix, char **new_matrix);
+char				**populate_matrix(char *argv, t_game *game);
+char				**copy_matrix(t_game *game);
+void				free_matrix(t_game *game);
 
 // Map checking
-void				check_map(char **matrix, char **new_matrix, t_game *game);
-void				check_boundaries(char **matrix, char **new_matrix,
-						int num_lines);
-void				check_rectangle(char **matrix, char **new_matrix);
+void				check_map(t_game *game);
+void				check_boundaries(t_game *game);
+void				check_rectangle(t_game *game);
 void				check_format(char *argv);
-void				check_size(char **matrix, char **new_matrix, t_game *game);
-void				check_characters(char **matrix, t_game *game, int x, int y);
-int					check_path(t_game *game, char **matrix);
-void				flood_fill(char **matrix, t_game *game, int x, int y);
+void				check_size(t_game *game);
+void				check_characters(t_game *game, int x, int y);
+int					check_path(t_game *game);
+void				flood_fill(t_game *game, int x, int y);
 
 // Initialize structs values
 void				initialize_game(t_game *game);
@@ -88,34 +88,28 @@ void				enable_instances(t_game *game);
 void				disable_instances(t_game *game, int i);
 void				flower_animation(t_game *game, int i);
 void				check_flame(t_game *game);
-
+void	set_active_flower(t_game *game, int i, int active_flower);
 void				animation_wrapper(void *param);
 
 // Load textures, images and instances of the image
-void				load_reptile(t_game *game, char **matrix,
-						char **new_matrix);
-void				load_background(t_game *game, char **matrix,
-						char **new_matrix);
-void				load_tree(t_game *game, char **matrix, char **new_matrix);
-void				load_door(t_game *game, char **matrix, char **new_matrix);
-void				load_flowers(t_game *game, char **matrix,
-						char **new_matrix);
-void				load_images(t_game *game, char **matrix, char **new_matrix);
-void				place_images(t_game *game, char **matrix,
-						char **new_matrix);
-void				load_flame(t_game *game, char **matrix, char **new_matrix);
-void				place_tree(t_game *game, char **matrix, char **new_matrix);
-void				place_door(t_game *game, char **matrix, char **new_matrix);
-void				place_flowers(t_game *game, char **matrix,
-						char **new_matrix);
-void				place_reptile(t_game *game, char **matrix,
-						char **new_matrix);
-void				place_flame(t_game *game, char **matrix, char **new_matrix);
+void				load_reptile(t_game *game);
+void				load_textures(t_game *game);
+void				load_tree(t_game *game);
+void				load_door(t_game *game);
+void				load_flowers(t_game *game);
+void				load_images(t_game *game);
+void				place_images(t_game *game);
+void				load_flame(t_game *game);
+void				place_tree(t_game *game);
+void				place_door(t_game *game);
+void				place_flowers(t_game *check_game_status);
+void				place_reptile(t_game *game);
+void				place_flame(t_game *game);
 
 // Delete images
 void				delete_images(t_game *game);
 
 // Error message
-void				error_msg(char *error, char **matrix, char **new_matrix);
+void				error_msg(char *error, t_game *game);
 
 #endif

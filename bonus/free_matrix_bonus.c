@@ -6,34 +6,34 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:10:32 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/26 09:10:38 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:52:26 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	free_matrix(char **matrix, char **new_matrix)
+void	free_matrix(t_game *game)
 {
 	int	i;
 
-	if (matrix)
+	if (game->matrix)
 	{
 		i = 0;
-		while (matrix[i] != NULL)
+		while (game->matrix[i] != NULL)
 		{
-			free(matrix[i]);
+			free(game->matrix[i]);
 			i++;
 		}
-		free(matrix);
+		free(game->matrix);
 	}
-	if (new_matrix)
+	if (game->new_matrix)
 	{
 		i = 0;
-		while (new_matrix[i] != NULL)
+		while (game->new_matrix[i] != NULL)
 		{
-			free(new_matrix[i]);
+			free(game->new_matrix[i]);
 			i++;
 		}
-		free(new_matrix);
+		free(game->new_matrix);
 	}
 }

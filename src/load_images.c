@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 10:34:28 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/25 14:18:27 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:13:13 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,21 @@
 
 void	load_images(t_game *game, char **matrix, char **new_matrix)
 {
-	load_background(game, matrix, new_matrix);
-	load_reptile(game, matrix, new_matrix);
-	load_tree(game, matrix, new_matrix);
-	load_crystal(game, matrix, new_matrix);
-	load_door(game, matrix, new_matrix);
+	game->background_t = mlx_load_png("./img/x4/grass.png");
+	game->reptile_t = mlx_load_png("./img/x4/reptile_front.png");
+	game->tree_t = mlx_load_png("./img/x4/tree.png");
+	game->crystal_t = mlx_load_png("./img/x4/crystal.png");
+	game->door_t = mlx_load_png("./img/x4/door.png");
+	game->closed_door_t = mlx_load_png("./img/x4/closed_door.png");
+	if (!game->background_t || !game->reptile_t || !game->tree_t
+		|| !game->crystal_t || !game->door_t || !game->closed_door_t)
+		error_msg("Error loading the texture", matrix, new_matrix);
+	game->background = mlx_texture_to_image(game->mlx, game->background_t);
+	game->reptile = mlx_texture_to_image(game->mlx, game->reptile_t);
+	game->tree = mlx_texture_to_image(game->mlx, game->tree_t);
+	game->crystal = mlx_texture_to_image(game->mlx, game->crystal_t);
+	game->door = mlx_texture_to_image(game->mlx, game->door_t);
+	game->closed_door = mlx_texture_to_image(game->mlx, game->closed_door_t);
 	place_images(game, matrix, new_matrix);
 }
 

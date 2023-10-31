@@ -20,12 +20,10 @@ SRC	= $(addprefix ./src/, main.c \
 			free_matrix.c \
 			hooks.c \
 			hooks_utils.c \
-			load_images.c \
-			load_textures.c)
+			load_images.c)
 
 BONUS_SRC = $(addprefix ./bonus/, main_bonus.c \
 			check_map_bonus.c \
-			flame.c \
 			check_characters_bonus.c \
 			error_msg_bonus.c \
 			place_images_bonus.c \
@@ -34,8 +32,8 @@ BONUS_SRC = $(addprefix ./bonus/, main_bonus.c \
 			free_matrix_bonus.c \
 			hooks_bonus.c \
 			hooks_utils_bonus.c \
-			load_images_bonus.c \
-			load_textures_bonus.c)
+			animation_bonus.c \
+			load_images_bonus.c)
 
 OBJ	= ${SRC:%.c=%.o}
 
