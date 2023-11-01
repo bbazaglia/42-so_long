@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:03:42 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/01 16:49:36 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/01 15:36:05 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@ void	check_characters(t_game *game, int x, int y)
 		game->player_y = y;
 	}
 	if (game->matrix[x][y] == 'E')
-	{
 		game->exit++;
-		game->exit_x = x;
-		game->exit_y = y;
-	}	
 	if (game->matrix[x][y] == 'C')
 		game->collectibles++;
 	if (game->matrix[x][y] == '0')

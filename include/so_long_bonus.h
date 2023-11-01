@@ -7,7 +7,6 @@
 # include <memory.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <time.h>
 # include <unistd.h>
 
 # define PIXELS 64
@@ -26,6 +25,8 @@ typedef struct s_game
 	int				error;
 	int				player_x;
 	int				player_y;
+	int				exit_x;
+	int				exit_y;
 	int				size_x;
 	int				size_y;
 	int				exit_reached;
@@ -39,7 +40,8 @@ typedef struct s_game
 	mlx_image_t		*door;
 	mlx_image_t		*closed_door;
 	mlx_image_t		*background;
-	mlx_image_t		*flower[4];
+	mlx_image_t		*crystal;
+	// mlx_image_t		*flower[4];
 	// mlx_image_t		*flower2;
 	// mlx_image_t		*flower3;
 	// mlx_image_t		*flower4;
@@ -49,7 +51,8 @@ typedef struct s_game
 	mlx_texture_t	*door_t;
 	mlx_texture_t	*closed_door_t;
 	mlx_texture_t	*background_t;
-	mlx_texture_t	*flower_t[4];
+	mlx_texture_t	*crystal_t;
+	// mlx_texture_t	*flower_t[4];
 	// mlx_texture_t	*flower2_t;
 	// mlx_texture_t	*flower3_t;
 	// mlx_texture_t	*flower4_t;
@@ -88,7 +91,7 @@ void				enable_instances(t_game *game);
 void				disable_instances(t_game *game, int i);
 void				flower_animation(t_game *game, int i);
 void				check_flame(t_game *game);
-void	set_active_flower(t_game *game, int i, int active_flower);
+void				set_active_flower(t_game *game, int i, int active_flower);
 void				animation_wrapper(void *param);
 
 // Load textures, images and instances of the image
@@ -102,7 +105,8 @@ void				place_images(t_game *game);
 void				load_flame(t_game *game);
 void				place_tree(t_game *game);
 void				place_door(t_game *game);
-void				place_flowers(t_game *check_game_status);
+//void				place_flowers(t_game *game);
+void				place_crystal(t_game *game);
 void				place_reptile(t_game *game);
 void				place_flame(t_game *game);
 

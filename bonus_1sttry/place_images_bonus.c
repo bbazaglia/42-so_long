@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:28:52 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/01 16:56:01 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:55:16 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	place_images(t_game *game)
 	}
 	place_tree(game);
 	place_door(game);
-	place_crystal(game);
+	place_flowers(game);
 	place_reptile(game);
 	place_flame(game);
 	game->str_moves = mlx_put_string(game->mlx, "Moves:", 25, 25);
@@ -88,7 +88,7 @@ void	place_door(t_game *game)
 	}
 }
 
-void	place_crystal(t_game *game)
+void	place_flowers(t_game *game)
 {
 	int	x;
 	int	y;
@@ -101,9 +101,14 @@ void	place_crystal(t_game *game)
 		{
 			if (game->matrix[x][y] == 'C')
 			{
-				if (mlx_image_to_window(game->mlx, game->crystal, y
+				if ((mlx_image_to_window(game->mlx, game->flower[3], y * PIXELS, x
+							* PIXELS) < 0) || (mlx_image_to_window(game->mlx,
+							game->flower[2], y * PIXELS, x * PIXELS) < 0)
+					|| (mlx_image_to_window(game->mlx, game->flower[1], y
 							* PIXELS, x * PIXELS) < 0)
-					error_msg("loading crystal image", game);
+					|| (mlx_image_to_window(game->mlx, game->flower[0], y
+							* PIXELS, x * PIXELS) < 0))
+					error_msg("loading flowers images", game);
 			}
 			y++;
 		}

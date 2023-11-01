@@ -6,30 +6,50 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:42:40 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/01 17:04:15 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/01 15:47:37 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	collect_crytals(t_game *game)
+void	collect_flowers(t_game *game)
 {
-	int	i;
 	int	w;
 	int	h;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < game->collected)
 	{
 		w = game->reptile->instances[0].x;
 		h = game->reptile->instances[0].y;
-		if (game->crystal->instances[i].enabled == true
-			&& h == game->crystal->instances[i].y
-			&& w == game->crystal->instances[i].x)
+		j = 0;
+		while (j < 4)
 		{
-			game->crystal->instances[i].enabled = false;
-			game->collectibles--;
+			if (game->flower[j]->instances[i].enabled)
+			{
+				if (h == game->flower[j]->instances[i].y
+					&& w == game->flower[j]->instances[i].x)
+				{
+					disable_instances(game, i);
+					game->collectibles--;
+				}
+			}
+			j++;
 		}
+		i++;
+	}
+}
+
+void	disable_instances(t_game *game, int j)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		game->flower[i]->instances[j].enabled = false;
 		i++;
 	}
 }
@@ -43,13 +63,12 @@ void	check_game_status(mlx_key_data_t keydata, t_game *game)
 		game->door->instances[0].enabled = true;
 	w = game->reptile->instances[0].x;
 	h = game->reptile->instances[0].y;
-	if (game->collectibles == 0)
+	if (h == game->door->instances[0].y && w == game->door->instances[0].x)
 	{
-		// call animate function
-		if ((h == game->door->instances[0].y && w == game->door->instances[0].x) && (keydata.action == MLX_PRESS && keydata.key == MLX_KEY_E))
-				mlx_close_window(game->mlx);
+		if (keydata.action == MLX_PRESS && keydata.key == MLX_KEY_E
+			&& game->collectibles == 0)
+			mlx_close_window(game->mlx);
 	}
-	
 }
 
 void	check_flame(t_game *game)
