@@ -59,6 +59,9 @@ libmlx:
 	@cmake ./lib/MLX42 -B ./lib/MLX42/build && make -C ./lib/MLX42/build -j4
 
 valgrind:
+	valgrind --leak-check=full --show-leak-kinds=all --suppressions=suppress_mlx.sup ./so_long	
+
+valgrind_bonus:
 	valgrind --leak-check=full --show-leak-kinds=all --suppressions=suppress_mlx.sup ./so_long_bonus	
 
 clean:

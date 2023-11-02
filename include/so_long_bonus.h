@@ -22,6 +22,7 @@ typedef struct s_game
 	int				collected;
 	int				space;
 	int				wall;
+	int				enemy;
 	int				error;
 	int				player_x;
 	int				player_y;
@@ -41,10 +42,6 @@ typedef struct s_game
 	mlx_image_t		*closed_door;
 	mlx_image_t		*background;
 	mlx_image_t		*crystal;
-	// mlx_image_t		*flower[4];
-	// mlx_image_t		*flower2;
-	// mlx_image_t		*flower3;
-	// mlx_image_t		*flower4;
 	mlx_image_t		*flame;
 	mlx_texture_t	*reptile_t;
 	mlx_texture_t	*tree_t;
@@ -52,10 +49,6 @@ typedef struct s_game
 	mlx_texture_t	*closed_door_t;
 	mlx_texture_t	*background_t;
 	mlx_texture_t	*crystal_t;
-	// mlx_texture_t	*flower_t[4];
-	// mlx_texture_t	*flower2_t;
-	// mlx_texture_t	*flower3_t;
-	// mlx_texture_t	*flower4_t;
 	mlx_texture_t	*flame_t;
 
 }					t_game;
@@ -87,25 +80,15 @@ void				check_down_trees(t_game *game);
 void				check_left_trees(t_game *game);
 void				check_right_trees(t_game *game);
 void				collect_crystals(t_game *game);
-// void				enable_instances(t_game *game);
-// void				disable_instances(t_game *game, int i);
 void				animation(t_game *game);
 void				check_flame(t_game *game);
-// void				set_active_flower(t_game *game, int i, int active_flower);
 void				animation_wrapper(void *param);
 
-// Load textures, images and instances of the image
-void				load_reptile(t_game *game);
-void				load_textures(t_game *game);
-void				load_tree(t_game *game);
-void				load_door(t_game *game);
-void				load_flowers(t_game *game);
+// Load images and place them according to the map
 void				load_images(t_game *game);
 void				place_images(t_game *game);
-void				load_flame(t_game *game);
 void				place_tree(t_game *game);
 void				place_door(t_game *game);
-//void				place_flowers(t_game *game);
 void				place_crystal(t_game *game);
 void				place_reptile(t_game *game);
 void				place_flame(t_game *game);

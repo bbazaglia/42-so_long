@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:42:40 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/02 11:39:21 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/02 13:53:36 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,29 +57,13 @@ void	animation_wrapper(void *param)
 	animation(game);
 }
 
-// void	animation(t_game *game)
-// {
-// 	static int	j;
-
-// 	j = 0;
-// 	if (game->collectibles == 0)
-// 	{
-// 		if (j < 50) // Continue the animation for 50 frames
-// 		{
-// 			if (j % 40 == 0)
-// 			{
-// 				// Toggle the door state between open and closed on even frames
-// 				game->door->instances[0].enabled = !game->door->instances[0].enabled;
-// 			}
-// 			j++;
-// 		}
-// 	}
-// }
-
-void animation(t_game *game)
+void	animation(t_game *game)
 {
-    static int j = 0;
-    static int frame_counter = 0;
+	static int	j;
+	static int	frame_counter;
+
+	j = 0;
+	frame_counter = 0;
 	if (game->collectibles == 0)
 	{
 		if (j < 50)
@@ -87,21 +71,19 @@ void animation(t_game *game)
 			frame_counter++;
 			if (frame_counter == 50)
 			{
-				// Toggle the door state between open and closed
-				game->door->instances[0].enabled = !game->door->instances[0].enabled;
-				frame_counter = 0; // Reset the frame counter
+				game->door->instances[0].enabled = \
+				!game->door->instances[0].enabled;
+				frame_counter = 0;
 				j++;
 			}
 		}
 	}
 }
 
-
-
 void	check_flame(t_game *game)
 {
-	int w;
-	int h;
+	int	w;
+	int	h;
 
 	w = game->reptile->instances[0].x;
 	h = game->reptile->instances[0].y;

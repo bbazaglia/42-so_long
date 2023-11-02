@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:13:05 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/01 15:35:47 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/02 13:43:36 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,5 @@ void	initialize_game(t_game *game)
 	game->wall = 0;
 	game->error = 0;
 	game->move_count = 0;
+	game->enemy = 0;
 }

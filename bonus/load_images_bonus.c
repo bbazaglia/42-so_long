@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:25:35 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/01 16:59:22 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/02 13:54:17 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	load_images(t_game *game)
 	game->flame_t = mlx_load_png("./img/x4/flame.png");
 	game->crystal_t = mlx_load_png("./img/x4/crystal.png");
 	if (!game->background_t || !game->reptile_t || !game->tree_t
-		|| !game->door_t || !game->closed_door_t || !game->flame_t || !game->crystal_t)
+		|| !game->door_t || !game->closed_door_t || !game->flame_t
+		|| !game->crystal_t)
 		error_msg("Error loading the texture", game);
 	game->background = mlx_texture_to_image(game->mlx, game->background_t);
 	game->reptile = mlx_texture_to_image(game->mlx, game->reptile_t);
@@ -33,7 +34,6 @@ void	load_images(t_game *game)
 	game->crystal = mlx_texture_to_image(game->mlx, game->crystal_t);
 	place_images(game);
 }
-
 
 void	place_flame(t_game *game)
 {

@@ -6,13 +6,13 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:04:18 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/01 15:28:57 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/02 13:50:07 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	check_map(t_game *game)	
+void	check_map(t_game *game)
 {
 	initialize_game(game);
 	check_size(game);
@@ -32,6 +32,8 @@ void	check_size(t_game *game)
 		while (game->matrix[x][y])
 		{
 			check_characters(game, x, y);
+			if (game->matrix[x][y] == 'F')
+				game->enemy++;
 			y++;
 		}
 		x++;
@@ -39,9 +41,13 @@ void	check_size(t_game *game)
 	game->size_x = x;
 	game->size_y = y;
 	if (game->exit != 1 || game->player != 1 || game->collectibles < 1)
-		error_msg("The map must contain 1 exit, at least 1 collectible, and 1 starting position", game);
+		error_msg("The map must contain 1 exit, at least 1\
+	collectible and 1 starting position", game);
 	if (game->error > 0)
-		error_msg("The map can be composed of only 6 characters:P, E, C, 0, 1, F", game);
+		error_msg("The map can be composed of only 6 characters:\
+	P, E, C, 0, 1, F", game);
+	if (game->enemy <= 0)
+		error_msg("The map must contain at least 1 enemy", game);
 }
 
 void	check_boundaries(t_game *game)

@@ -75,14 +75,6 @@ void				check_right_trees(t_game *game);
 void				collect_crytals(t_game *game);
 
 // Load textures, images and instances of the image
-void				load_reptile(t_game *game, char **matrix,
-						char **new_matrix);
-void				load_background(t_game *game, char **matrix,
-						char **new_matrix);
-void				load_tree(t_game *game, char **matrix, char **new_matrix);
-void				load_door(t_game *game, char **matrix, char **new_matrix);
-void				load_crystal(t_game *game, char **matrix,
-						char **new_matrix);
 void				load_images(t_game *game, char **matrix, char **new_matrix);
 void				place_images(t_game *game, char **matrix,
 						char **new_matrix);
