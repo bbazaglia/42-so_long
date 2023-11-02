@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:42:40 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/02 13:53:36 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:30:20 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ void	animation(t_game *game)
 	static int	j;
 	static int	frame_counter;
 
-	j = 0;
-	frame_counter = 0;
 	if (game->collectibles == 0)
 	{
 		if (j < 50)

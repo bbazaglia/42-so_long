@@ -53,7 +53,7 @@ $(NAME_BONUS): $(BONUS_OBJ)
 
 libft:
 	@make -C ./lib/LIBFT 
-	@cp ./lib/LIBFT/libft.a $(NAME)
+#	@cp ./lib/LIBFT/libft.a $(NAME)
 
 libmlx:
 	@cmake ./lib/MLX42 -B ./lib/MLX42/build && make -C ./lib/MLX42/build -j4

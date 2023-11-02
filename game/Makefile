@@ -25,5 +25,5 @@ valgrind:
 clean:
 	$(call REMOVE, ${OBJ}/*.o)
 fclean: clean
-	$(call REMVE, ${NAME})
+	$(call REMOVE, ${NAME})
 re: fclean all
