@@ -6,13 +6,13 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:42:40 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/01 17:04:15 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/02 11:39:21 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	collect_crytals(t_game *game)
+void	collect_crystals(t_game *game)
 {
 	int	i;
 	int	w;
@@ -39,26 +39,72 @@ void	check_game_status(mlx_key_data_t keydata, t_game *game)
 	int	w;
 	int	h;
 
-	if (game->collectibles == 0)
-		game->door->instances[0].enabled = true;
 	w = game->reptile->instances[0].x;
 	h = game->reptile->instances[0].y;
 	if (game->collectibles == 0)
 	{
-		// call animate function
-		if ((h == game->door->instances[0].y && w == game->door->instances[0].x) && (keydata.action == MLX_PRESS && keydata.key == MLX_KEY_E))
-				mlx_close_window(game->mlx);
+		if ((h == game->door->instances[0].y && w == game->door->instances[0].x)
+			&& (keydata.action == MLX_PRESS && keydata.key == MLX_KEY_E))
+			mlx_close_window(game->mlx);
 	}
-	
 }
+
+void	animation_wrapper(void *param)
+{
+	t_game	*game;
+
+	game = (t_game *)param;
+	animation(game);
+}
+
+// void	animation(t_game *game)
+// {
+// 	static int	j;
+
+// 	j = 0;
+// 	if (game->collectibles == 0)
+// 	{
+// 		if (j < 50) // Continue the animation for 50 frames
+// 		{
+// 			if (j % 40 == 0)
+// 			{
+// 				// Toggle the door state between open and closed on even frames
+// 				game->door->instances[0].enabled = !game->door->instances[0].enabled;
+// 			}
+// 			j++;
+// 		}
+// 	}
+// }
+
+void animation(t_game *game)
+{
+    static int j = 0;
+    static int frame_counter = 0;
+	if (game->collectibles == 0)
+	{
+		if (j < 50)
+		{
+			frame_counter++;
+			if (frame_counter == 50)
+			{
+				// Toggle the door state between open and closed
+				game->door->instances[0].enabled = !game->door->instances[0].enabled;
+				frame_counter = 0; // Reset the frame counter
+				j++;
+			}
+		}
+	}
+}
+
+
 
 void	check_flame(t_game *game)
 {
-	int	w;
-	int	h;
+	int w;
+	int h;
 
 	w = game->reptile->instances[0].x;
 	h = game->reptile->instances[0].y;
 	if (h == game->flame->instances[0].y && w == game->flame->instances[0].x)
-			mlx_close_window(game->mlx);
+		mlx_close_window(game->mlx);
 }

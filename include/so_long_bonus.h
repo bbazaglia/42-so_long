@@ -86,12 +86,12 @@ void				check_up_trees(t_game *game);
 void				check_down_trees(t_game *game);
 void				check_left_trees(t_game *game);
 void				check_right_trees(t_game *game);
-void				collect_flowers(t_game *game);
-void				enable_instances(t_game *game);
-void				disable_instances(t_game *game, int i);
-void				flower_animation(t_game *game, int i);
+void				collect_crystals(t_game *game);
+// void				enable_instances(t_game *game);
+// void				disable_instances(t_game *game, int i);
+void				animation(t_game *game);
 void				check_flame(t_game *game);
-void				set_active_flower(t_game *game, int i, int active_flower);
+// void				set_active_flower(t_game *game, int i, int active_flower);
 void				animation_wrapper(void *param);
 
 // Load textures, images and instances of the image

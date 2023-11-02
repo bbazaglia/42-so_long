@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:13:57 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/01 17:01:44 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/02 11:24:54 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(void)
 			error_msg("There's not a valid path in the map", &game);
 		game.mlx = mlx_init(game.size_y * PIXELS, game.size_x * PIXELS, "So Long", true);
 		load_images(&game);
+		mlx_loop_hook(game.mlx, animation_wrapper, &game);
 		mlx_key_hook(game.mlx, ft_hook, &game);
 		mlx_loop(game.mlx);
 		delete_images(&game);

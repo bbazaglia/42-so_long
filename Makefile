@@ -32,7 +32,6 @@ BONUS_SRC = $(addprefix ./bonus/, main_bonus.c \
 			free_matrix_bonus.c \
 			hooks_bonus.c \
 			hooks_utils_bonus.c \
-			animation_bonus.c \
 			load_images_bonus.c)
 
 OBJ	= ${SRC:%.c=%.o}

@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:28:52 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/01 16:56:01 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/02 11:12:36 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void	place_reptile(t_game *game)
 			if (game->matrix[x][y] == 'P')
 			{
 				if (mlx_image_to_window(game->mlx, game->reptile, y * PIXELS, x
-						* PIXELS) < 0)
+					* PIXELS) < 0)
 					error_msg("loading reptile image", game);
 			}
 			y++;
