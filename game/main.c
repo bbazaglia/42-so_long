@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// incomplete code
+
 typedef enum e_image{
     BACKGROUND_CUTE,
     FLOWER_1,
