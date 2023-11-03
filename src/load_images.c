@@ -6,11 +6,13 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 10:34:28 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/31 15:13:13 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:24:07 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+// Note: check bonus (bonus/load_images_bonus.c) to see an improved version of this code
 
 void	load_images(t_game *game, char **matrix, char **new_matrix)
 {

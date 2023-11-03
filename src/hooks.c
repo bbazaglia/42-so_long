@@ -6,11 +6,13 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 11:04:41 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/02 14:02:56 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:30:34 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+// check the bonus (bonus/hooks_bonus.c) to see an improved version of this code
 
 void	ft_hook(mlx_key_data_t keydata, void *param)
 {

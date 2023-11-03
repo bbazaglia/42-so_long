@@ -6,13 +6,14 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 10:35:18 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/01 15:01:30 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/03 13:10:03 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// to run valgrind: valgrind --leak-check=full --show-leak-kinds=all --suppressions=suppress_mlx.sup ./so_long
+/* notes: instead of passing the map as a command line argument, I used a variable in order to test the code in a easier way
+check the bonus directory to see an improved version of this code with animations and matrixes passed as elements to the t_game struct */
 
 int	main(void)
 {
@@ -21,7 +22,6 @@ int	main(void)
 	int		argc;
 	char	*argv;
 	t_game	game;
-	int		i;
 
 	argc = 2;
 	argv = "map.ber";
@@ -37,13 +37,6 @@ int	main(void)
 			error_msg("There's not a valid path in the map", matrix,
 					new_matrix);
 		}
-		i = 0;
-		while (matrix[i])
-		{
-			ft_printf("%s\n", matrix[i]);
-			i++;
-		}
-		ft_printf("%d\n%d\n", game.size_x, game.size_y);
 		game.mlx = mlx_init(game.size_y * PIXELS, game.size_x * PIXELS,
 				"So Long", true);
 		load_images(&game, matrix, new_matrix);

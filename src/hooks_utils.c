@@ -6,11 +6,13 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 10:52:57 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/25 14:30:59 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:32:01 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+// check the bonus (bonus/hooks_utils_bonus.c) to see the animation functions
 
 void	collect_crytals(t_game *game)
 {
