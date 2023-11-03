@@ -6,13 +6,11 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:13:57 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/02 11:24:54 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:23:46 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-// to run valgrind: valgrind --leak-check=full --show-leak-kinds=all --suppressions=suppress_mlx.sup ./so_long
 
 int	main(void)
 {

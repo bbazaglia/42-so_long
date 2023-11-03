@@ -6,74 +6,46 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:25:35 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/02 13:54:17 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:19:16 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	load_images(t_game *game)
+void	load_image(t_game *game, void **image, const char *file_path)
 {
-	game->background_t = mlx_load_png("./img/x4/grass.png");
-	game->reptile_t = mlx_load_png("./img/x4/reptile_front.png");
-	game->tree_t = mlx_load_png("./img/x4/tree.png");
-	game->door_t = mlx_load_png("./img/x4/door.png");
-	game->closed_door_t = mlx_load_png("./img/x4/closed_door.png");
-	game->flame_t = mlx_load_png("./img/x4/flame.png");
-	game->crystal_t = mlx_load_png("./img/x4/crystal.png");
-	if (!game->background_t || !game->reptile_t || !game->tree_t
-		|| !game->door_t || !game->closed_door_t || !game->flame_t
-		|| !game->crystal_t)
+	*image = mlx_load_png(file_path);
+	if (!*image)
 		error_msg("Error loading the texture", game);
-	game->background = mlx_texture_to_image(game->mlx, game->background_t);
-	game->reptile = mlx_texture_to_image(game->mlx, game->reptile_t);
-	game->tree = mlx_texture_to_image(game->mlx, game->tree_t);
-	game->door = mlx_texture_to_image(game->mlx, game->door_t);
-	game->closed_door = mlx_texture_to_image(game->mlx, game->closed_door_t);
-	game->flame = mlx_texture_to_image(game->mlx, game->flame_t);
-	game->crystal = mlx_texture_to_image(game->mlx, game->crystal_t);
-	place_images(game);
+	*image = mlx_texture_to_image(game->mlx, *image);
 }
 
-void	place_flame(t_game *game)
+void	delete_image(t_game *game, void *image)
 {
-	int	x;
-	int	y;
+	mlx_delete_image(game->mlx, image);
+}
 
-	x = 0;
-	while (game->matrix[x])
-	{
-		y = 0;
-		while (game->matrix[x][y])
-		{
-			if (game->matrix[x][y] == 'F')
-			{
-				if (mlx_image_to_window(game->mlx, game->flame, y * PIXELS, x
-						* PIXELS) < 0)
-					error_msg("loading flame image", game);
-			}
-			y++;
-		}
-		x++;
-	}
+void	load_images(t_game *game)
+{
+	load_image(game, &game->background_t, "./img/x4/grass.png");
+	load_image(game, &game->reptile_t, "./img/x4/reptile_front.png");
+	load_image(game, &game->tree_t, "./img/x4/tree.png");
+	load_image(game, &game->door_t, "./img/x4/door.png");
+	load_image(game, &game->closed_door_t, "./img/x4/closed_door.png");
+	load_image(game, &game->flame_t, "./img/x4/flame.png");
+	load_image(game, &game->crystal_t, "./img/x4/crystal.png");
+	place_images(game);
 }
 
 void	delete_images(t_game *game)
 {
-	mlx_delete_image(game->mlx, game->reptile);
-	mlx_delete_image(game->mlx, game->tree);
-	mlx_delete_image(game->mlx, game->background);
-	mlx_delete_image(game->mlx, game->door);
-	mlx_delete_image(game->mlx, game->closed_door);
-	mlx_delete_image(game->mlx, game->str_count);
-	mlx_delete_image(game->mlx, game->str_moves);
-	mlx_delete_image(game->mlx, game->crystal);
-	mlx_delete_image(game->mlx, game->flame);
-	mlx_delete_texture(game->reptile_t);
-	mlx_delete_texture(game->tree_t);
-	mlx_delete_texture(game->background_t);
-	mlx_delete_texture(game->door_t);
-	mlx_delete_texture(game->closed_door_t);
-	mlx_delete_texture(game->crystal_t);
-	mlx_delete_texture(game->flame_t);
+	delete_image(game, game->background);
+	delete_image(game, game->reptile);
+	delete_image(game, game->tree);
+	delete_image(game, game->door);
+	delete_image(game, game->closed_door);
+	delete_image(game, game->flame);
+	delete_image(game, game->crystal);
+	delete_image(game, game->str_count);
+	delete_image(game, game->str_moves);
 }
