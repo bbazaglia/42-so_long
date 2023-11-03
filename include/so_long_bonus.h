@@ -50,7 +50,6 @@ typedef struct s_game
 	mlx_texture_t	*background_t;
 	mlx_texture_t	*crystal_t;
 	mlx_texture_t	*flame_t;
-
 }					t_game;
 
 // Build and destroy matrixes
@@ -72,28 +71,23 @@ void				flood_fill(t_game *game, int x, int y);
 // Initialize structs values
 void				initialize_game(t_game *game);
 
-// Movements and hooks functions
+// Movements, hooks and animation functions
 void				ft_hook(mlx_key_data_t keydata, void *param);
 void				check_game_status(mlx_key_data_t keydata, t_game *game);
-void				check_up_trees(t_game *game);
-void				check_down_trees(t_game *game);
-void				check_left_trees(t_game *game);
-void				check_right_trees(t_game *game);
+void				move_reptile(t_game *game, int dx, int dy);
+void				print_move_count(t_game *game);
+void				check_flame(t_game *game);
 void				collect_crystals(t_game *game);
 void				animation(t_game *game);
-void				check_flame(t_game *game);
 void				animation_wrapper(void *param);
 
-// Load images and place them according to the map
+// Load images, place them according to the map and delete them
+void				load_image(t_game *game, void **image,
+						const char *file_path);
 void				load_images(t_game *game);
+void				place_image(t_game *game, void *image, char character);
 void				place_images(t_game *game);
-void				place_tree(t_game *game);
-void				place_door(t_game *game);
-void				place_crystal(t_game *game);
-void				place_reptile(t_game *game);
-void				place_flame(t_game *game);
-
-// Delete images
+void				delete_image(t_game *game, void *image);
 void				delete_images(t_game *game);
 
 // Error message
