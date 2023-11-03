@@ -6,13 +6,13 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:32:59 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/01 13:36:00 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/03 11:40:09 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <object.h>
-#include <stdlib.h>
+#include <game.h>
 
+// create instances of a t_object struct
 t_object *object_push(int id, t_coord pos, t_image *img)
 {
     t_object    *set;
@@ -26,6 +26,7 @@ t_object *object_push(int id, t_coord pos, t_image *img)
     return (set);
 }
 
+// update the attributes of a t_object struct
 void    object_set(t_object *set, int id, t_coord pos, t_image *img)
 {
     if (!set)

@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:24:24 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/01 14:28:01 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/03 11:20:56 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 #include <chained.h>
 #include <image.h>
-#include <math-of.h>
+#include <coord.h>
 #include <object.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 typedef struct s_game{
     t_chained *object;

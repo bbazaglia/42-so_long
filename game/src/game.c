@@ -6,19 +6,21 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:26:33 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/01 14:30:27 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/03 11:47:26 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <game.h>
-#include <stdio.h>
-#include <stdlib.h>
 
+/* chained_push(object) creates the new node, and 
+chained_next_first adds that node to the front of the list stored in the set->object field of the t_game structure.*/
 static void game_object_next_first(t_game *set, t_object *object)
 {
     chained_next_first(&set->object, chained_push(object));
 }
 
+/* chained_push(object) creates the new node, and 
+chained_next_last adds that node to the end of the list stored in the set->object field of the t_game structure. */
 static void game_object_next_last(t_game *set, t_object *object)
 {
     chained_next_last(&set->object, chained_push(object));
@@ -121,6 +123,7 @@ static void game_pop(t_game *game)
     object_pop(game);
 }
 
+// initialize the function pointers of the game structure
 void    game_function(t_game *set)
 {
     set->object_next_first = game_object_next_first;
@@ -133,6 +136,7 @@ void    game_function(t_game *set)
     set->pop = game_pop;
 }
 
+// initialize the game structure setting the object and image linked lists to NULL
 void game_set(t_game *set)
 {
     set->object = NULL;

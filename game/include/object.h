@@ -6,15 +6,14 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:29:05 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/01 13:33:16 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/03 11:33:20 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECT_H
 # define OBJECT_H
 
-#include <math-of.h>
-#include <image.h>
+#include <game.h>
 
 typedef struct s_object{
     int             id;
