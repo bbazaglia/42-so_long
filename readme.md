@@ -1,3 +1,8 @@
+
+
+![So long](<Screenshot from 2023-11-06 10-32-07.png>)
+
+
 This was my first attempt to code a 2D game using the graphic library provided by codam (MLX42) avaliable in: https://github.com/codam-coding-college/MLX42
 Students were given 1 month to produce it. 
 We've started learning C 3 months ago, and this was our first graphic project. WOW. just WOW.
