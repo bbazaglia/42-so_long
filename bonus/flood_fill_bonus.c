@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:10:00 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/31 12:02:44 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:11:07 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	flood_fill(t_game *game, int x, int y)
 {
 	if (x < 0 || x >= game->size_x || y < 0 || y >= game->size_y)
 		return ;
-	if (game->new_matrix[x][y] == '1' || game->new_matrix[x][y] == 'X')
+	if (game->new_matrix[x][y] == '1' || game->new_matrix[x][y] == 'X'
+		|| game->new_matrix[x][y] == 'F')
 		return ;
 	if (game->new_matrix[x][y] == 'C')
 		game->collected++;

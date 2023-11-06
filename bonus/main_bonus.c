@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:13:57 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/03 12:23:46 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:14:35 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 	t_game	game;
 
 	argc = 2;
-	argv = "map.ber";
+	argv = "bonus_map.ber";
 	if (argc == 2)
 	{
 		check_format(argv);
@@ -29,7 +29,8 @@ int	main(void)
 		check_map(&game);
 		if (check_path(&game) == 1)
 			error_msg("There's not a valid path in the map", &game);
-		game.mlx = mlx_init(game.size_y * PIXELS, game.size_x * PIXELS, "So Long", true);
+		game.mlx = mlx_init(game.size_y * PIXELS, game.size_x * PIXELS,
+				"So Long", true);
 		load_images(&game);
 		mlx_loop_hook(game.mlx, animation_wrapper, &game);
 		mlx_key_hook(game.mlx, ft_hook, &game);

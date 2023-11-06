@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/06 10:15:06 by bbazagli          #+#    #+#             */
+/*   Updated: 2023/11/06 10:15:12 by bbazagli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
 
@@ -82,12 +94,9 @@ void				animation(t_game *game);
 void				animation_wrapper(void *param);
 
 // Load images, place them according to the map and delete them
-void				load_image(t_game *game, void **image,
-						const char *file_path);
 void				load_images(t_game *game);
 void				place_image(t_game *game, void *image, char character);
 void				place_images(t_game *game);
-void				delete_image(t_game *game, void *image);
 void				delete_images(t_game *game);
 
 // Error message

@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:04:18 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/02 13:50:07 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:12:03 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ void	check_size(t_game *game)
 	game->size_y = y;
 	if (game->exit != 1 || game->player != 1 || game->collectibles < 1)
 		error_msg("The map must contain 1 exit, at least 1\
-	collectible and 1 starting position", game);
+collectible and 1 starting position", game);
 	if (game->error > 0)
 		error_msg("The map can be composed of only 6 characters:\
-	P, E, C, 0, 1, F", game);
+P, E, C, 0, 1, F", game);
 	if (game->enemy <= 0)
 		error_msg("The map must contain at least 1 enemy", game);
 }
@@ -65,13 +65,8 @@ void	check_boundaries(t_game *game)
 		y = 0;
 		while (y <= col)
 		{
-			if (x == 0 && game->matrix[x][y] != '1')
-				error_msg("Boundaries must be set to 1", game);
-			if (y == 0 && game->matrix[x][y] != '1')
-				error_msg("Boundaries must be set to 1", game);
-			if (y == col && game->matrix[x][y] != '1')
-				error_msg("Boundaries must be set to 1", game);
-			if (x == row && game->matrix[x][y] != '1')
+			if ((x == 0 || y == 0 || x == row || y == col)
+				&& game->matrix[x][y] != '1')
 				error_msg("Boundaries must be set to 1", game);
 			y++;
 		}
