@@ -2,7 +2,7 @@
 
 ![So long](<gamescreenshot.png>)
 
-# To play the game: run "make bonus" then ./so_long_bonus
+# to play: run "make bonus" then ./so_long_bonus
 
 This was my first attempt to code a 2D game using the graphic library provided by codam (MLX42) avaliable in: https://github.com/codam-coding-college/MLX42
 Students were given 1 month to produce it. 
