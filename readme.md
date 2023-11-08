@@ -1,6 +1,6 @@
 
 
-![So long](<Screenshot from 2023-11-06 10-32-07.png>)
+![So long](<gamescreenshot.png>)
 
 To play the game:
 run "make bonus"
