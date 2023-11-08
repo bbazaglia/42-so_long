@@ -3,6 +3,7 @@
 ![So long](<gamescreenshot.png>)
 
 # To play the game: run "make bonus" then ./so_long_bonus
+-> move the player using arrows; press ESC to exit the game and 'E' to open the door (after all crystals are collected) 
 
 This was my first attempt to code a 2D game using the graphic library provided by codam (MLX42) avaliable in: https://github.com/codam-coding-college/MLX42
 Students were given 1 month to produce it. 
@@ -16,7 +17,6 @@ The animation consists of the open/close door's movement after all the itens are
 The enemy is a flame that causes the interruption of the game if the player touches it.  
 
 In the game directory I'm still building a third version of the code, in which I aim to work with linked lists to build coordenates and vectors. 
-
 In the lib directory, you can check out the graphic library plus the LIBFT.
 The LIBFT contains some functions that reproduce the behaviour of many functions found in the C library and others.
 In this project, I used the get_next_line function, which works as a "fgets", and the ft_printf, that mimcs "printf".
