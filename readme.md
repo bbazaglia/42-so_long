@@ -3,6 +3,7 @@
 ![So long](<gamescreenshot.png>)
 
 # to play: run "make bonus" then ./so_long_bonus
+-> move the player using arrows; press ESC to exit the game and 'E' to open the door (after all crystals are collected)
 
 This was my first attempt to code a 2D game using the graphic library provided by codam (MLX42) avaliable in: https://github.com/codam-coding-college/MLX42
 Students were given 1 month to produce it. 
