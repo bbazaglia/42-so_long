@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 08:21:59 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/27 14:19:59 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/08 10:04:16 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	check_rectangle(char **matrix, char **new_matrix)
 {
 	int		x;
 	int		y;
-	int		count;
 	size_t	size;
 
 	size = ft_strlen(matrix[0]);
@@ -74,7 +73,6 @@ void	check_rectangle(char **matrix, char **new_matrix)
 	while (matrix[x])
 	{
 		y = 0;
-		count = 0;
 		while (matrix[x][y])
 			y++;
 		if (ft_strlen(matrix[x]) != size)
