@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:04:18 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/11/08 09:43:57 by bbazagli         ###   ########.fr       */
+/*   Updated: 2023/11/08 09:49:07 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ void	check_rectangle(t_game *game)
 	while (game->matrix[x])
 	{
 		y = 0;
-		count = 0;
 		while (game->matrix[x][y])
 			y++;
 		if (ft_strlen(game->matrix[x]) != size)
