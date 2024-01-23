@@ -1,27 +1,46 @@
-
+<h1 align="center">
+	🎮 so_long
+</h1>
 
 ![So long](<gamescreenshot.png>)
 
-# To play: run "make bonus" then ./so_long_bonus
--> move the player using arrows; press ESC to exit the game and 'E' to open the door (after all crystals are collected) 
+## 💡 About the project
 
-This was my first attempt to code a 2D game using the graphic library provided by codam (MLX42) avaliable in: https://github.com/codam-coding-college/MLX42
-Students were given 1 month to produce it. 
-We've started learning C 3 months ago, and this was our first graphic project. WOW. just WOW.
+This project is a very small 2D game using the graphic library provided by CODAM: [MLX42](https://github.com/codam-coding-college/MLX42).
 
-In the source directory, I provided my first version of the code.
+Its purpose is to make you work with textures, sprites, and some other basic gameplay elements.
+
+## 📋 Testing
+
+To compile, go to the project path and run:
+
+```shell
+$ make bonus 
+```
+
+Then, execute the program passing a map file as an argument. 
+
+```shell
+$ ./so_long_bonus bonus_map.ber
+```
+
+<strong>Move the player using arrows; press ESC to exit the game and 'E' to open the door (after all crystals are collected)</strong>.
+
+##  👾 Some versions of this code
+
+In the "source" directory, I provided my first version of the code.
 I didn't update it because it was nice to realize how much I improved during the project.
 
-In the bonus directory I provided my second version of the code, with refactored functions, an animation, and an enemy patrol.
+In the "bonus" directory I provided my second version of the code, with refactored functions, an animation, and an enemy patrol.
 The animation consists of the open/close door's movement after all the itens are collected, serving as a signal that you can exit the game.
 The enemy is a flame that causes the interruption of the game if the player touches it.  
 
-In the game directory I'm still building a third version of the code, in which I aim to work with linked lists to build coordenates and vectors. 
+In the "game" directory I'm still building a third version of the code, in which I aim to work with linked lists to build coordenates and vectors. 
 In the lib directory, you can check out the graphic library plus the LIBFT.
 The LIBFT contains some functions that reproduce the behaviour of many functions found in the C library and others.
 In this project, I used the get_next_line function, which works as a "fgets", and the ft_printf, that mimcs "printf".
 
-# Enough talking. What was done in this code?
+##  📝 What was done in this code?
 
 1- I check if the text file is in the correct formart (.ber)
 
