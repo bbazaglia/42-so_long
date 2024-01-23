@@ -18,10 +18,10 @@ To compile, go to the project path and run:
 $ make bonus 
 ```
 
-Then, execute the program passing a map file as an argument. 
+Then, execute the program.
 
 ```shell
-$ ./so_long_bonus bonus_map.ber
+$ ./so_long_bonus 
 ```
 
 <strong>How to play?</strong>
