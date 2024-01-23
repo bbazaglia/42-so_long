@@ -54,29 +54,29 @@ In this project, I used the get_next_line function, which works as a "fgets", an
 
 3- I check if the map is valid:
 
-	-- The map can be composed of only these 5 characters:
+- The map can be composed of only these 5 characters:
 
-	0 for an empty space,
+0 for an empty space,
 
-	1 for a wall,
+1 for a wall,
 
-	C for a collectible,
+C for a collectible,
 
-	E for a map exit,
+E for a map exit,
 
-	P for the player’s starting position.
+P for the player’s starting position.
 
-	(Note: I added an F for 'fire', the enemy from the bonus part).
+(Note: I added an F for 'fire', the enemy from the bonus part).
 
-	-- The map must be rectangular.
+- The map must be rectangular.
 
-	-- The map must be closed/surrounded by walls.
+- The map must be closed/surrounded by walls.
 
-	-- There is a valid path in the map (it is possible to collect every collectible present on the map and then then exit).
+- There is a valid path in the map (it is possible to collect every collectible present on the map and then then exit).
 	
-	Here I used the <strong>flood fill algorithm</strong>, and as it modifies the map, I created a copy of the matrix specifically for this purpose. 
+Here I used the <strong>flood fill algorithm</strong>, and as it modifies the map, I created a copy of the matrix specifically for this purpose. 
 
-4- I use the graphic library to display an window and load the images.
+<strong>4-</strong> I use the graphic library to display an window and load the images.
 
 5- I display instances of the images according to the map's positions.
 
