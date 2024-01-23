@@ -26,11 +26,11 @@ $ ./so_long_bonus bonus_map.ber
 
 <strong>How to play?</strong>
 
-<strong>Move the player using arrows</strong>.
+- Move the player using arrows
 
-<strong>Press ESC to exit the game</strong>.
+- Press ESC to exit the game
 
-<strong>Press'E' to open the door (after all crystals are collected)</strong>.
+- Press'E' to open the door (after all crystals are collected)
 
 ##  👾 Some versions of this code
 
