@@ -56,15 +56,15 @@ In this project, I used the get_next_line function, which works as a "fgets", an
 
 - The map can be composed of only these 5 characters:
 
-0 for an empty space,
+*0 for an empty space,
 
-1 for a wall,
+*1 for a wall,
 
-C for a collectible,
+*C for a collectible,
 
-E for a map exit,
+*E for a map exit,
 
-P for the player’s starting position.
+*P for the player’s starting position.
 
 (Note: I added an F for 'fire', the enemy from the bonus part).
 
@@ -76,13 +76,13 @@ P for the player’s starting position.
 	
 Here I used the <strong>flood fill algorithm</strong>, and as it modifies the map, I created a copy of the matrix specifically for this purpose. 
 
-<strong>4-</strong> I use the graphic library to display an window and load the images.
+4- I use the graphic library to display an window and load the images.
 
 5- I display instances of the images according to the map's positions.
 
 6- I create a loop to check the player's movements.
 
--- In the bonus part, another loop was created to animate the door.
+In the bonus part, another loop was created to animate the door.
 
 7- I delete all the images and terminate the graphic library's use.
 
