@@ -74,7 +74,7 @@ In this project, I used the get_next_line function, which works as a "fgets", an
 
 	-- There is a valid path in the map (it is possible to collect every collectible present on the map and then then exit).
 	
-	Here I used the *flood fill algorithm*, and as it modifies the map, I created a copy of the matrix specifically for this purpose. 
+	Here I used the <strong>flood fill algorithm</strong>, and as it modifies the map, I created a copy of the matrix specifically for this purpose. 
 
 4- I use the graphic library to display an window and load the images.
 
