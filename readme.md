@@ -24,7 +24,13 @@ Then, execute the program passing a map file as an argument.
 $ ./so_long_bonus bonus_map.ber
 ```
 
-<strong>Move the player using arrows; press ESC to exit the game and 'E' to open the door (after all crystals are collected)</strong>.
+<strong>How to play?</strong>
+
+<strong>Move the player using arrows</strong>.
+
+<strong>Press ESC to exit the game</strong>.
+
+<strong>Press'E' to open the door (after all crystals are collected)</strong>.
 
 ##  👾 Some versions of this code
 
